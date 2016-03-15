@@ -1,0 +1,433 @@
+<div class="container" ng-controller="CreateUsersController as createUsers">
+    <h1>{{createUsers.moduleName}}
+        <small>{{createUsers.pageName}}</small>
+    </h1>
+    <div class="panel panel-primary container-z1">
+        <div class="panel-body">
+
+            <form name="createUsersForm" class="form-horizontal"
+                  ng-submit="createUsersForm.$valid && createUsers.validateFormData()" novalidate>
+                <fieldset>
+                    <legend>Personal Info</legend>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="[{'has-error' : createUsersForm.documentType.$invalid && createUsersForm.documentType.$touched}]">
+                                <!-- Document Type-->
+                                <label for="inputDocumentType" class="col-md-4 control-label">Document Type</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputDocumentType" name="documentType" required
+                                            ng-model="createUsers.personalInfo.documentType"
+                                            ng-options="option.name for option in createUsers.documentTypeApi track by option.id">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="[{'has-error' : createUsersForm.documentNumber.$invalid && createUsersForm.documentNumber.$dirty}]">
+                                <!-- Document Number -->
+                                <label for="inputDocumentNumber" class="col-md-4 control-label">Document Number</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="inputDocumentNumber" placeholder="Document Number"
+                                           ng-model="createUsers.personalInfo.documentNumber" name="documentNumber" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="[{'has-error' : createUsersForm.lastName.$invalid && createUsersForm.lastName.$dirty}]">
+                                <!-- First Last Name -->
+                                <label for="inputLastName1" class="col-md-4 control-label">First Last Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name"
+                                           ng-model="createUsers.personalInfo.firstLastName" name="lastName" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="[{'has-error' : createUsersForm.secondLastName.$invalid && createUsersForm.secondLastName.$dirty}]">
+                                <!-- Second Last Name -->
+                                <label for="inputLastName2" class="col-md-4 control-label">Second Last Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputLastName2" placeholder="Second Last Name"
+                                           ng-model="createUsers.personalInfo.secondLastName" name="secondLastName" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6" >
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.inputName.$invalid && createUsersForm.inputName.$dirty}]">
+                                <!-- Name -->
+                                <label for="inputName" class="col-md-4 control-label">Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Name" required
+                                           ng-model="createUsers.personalInfo.name" name="inputName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.address.$invalid && createUsersForm.address.$dirty}]">
+                                <!-- Address -->
+                                <label for="inputAddress" class="col-md-4 control-label">Address</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Address"
+                                           ng-model="createUsers.personalInfo.address" name="address" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthDay.$invalid && createUsersForm.birthDay.$touched}]">
+                                <!-- Birthday -->
+                                <label for="inputBirthDay" class="col-md-4 control-label">Birthday</label>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday"
+                                           ng-model="createUsers.personalInfo.birthday" name="birthDay" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"  ng-class="[{'has-error' : createUsersForm.age.$invalid && createUsersForm.age.$dirty}]">
+                                <!-- Age -->
+                                <label for="inputAge" class="col-md-4 control-label">Age</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="inputAge" placeholder="Age"
+                                           ng-model="createUsers.personalInfo.age" name="age" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.birthPlace.$invalid && createUsersForm.birthPlace.$touched}]">
+                                <!-- Birth Place -->
+                                <label for="inputBirthPlace" class="col-md-4 control-label">Birth place</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputBirthPlace" required
+                                            ng-model="createUsers.personalInfo.birthPlace" name="birthPlace"
+                                            ng-options="option.name for option in createUsers.birthPlaceApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.nationality.$invalid && createUsersForm.nationality.$touched}]">
+                                <!-- Nationality -->
+                                <label for="inputNationality" class="col-md-4 control-label">Nationality</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputNationality" name="nationality" required
+                                            ng-model="createUsers.personalInfo.nationality"
+                                            ng-options="option.nationality for option in createUsers.nationalityApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.nOfChildren.$invalid && createUsersForm.nOfChildren.$dirty}]">
+                                <!-- # of children -->
+                                <label for="inputNOfChildren" class="col-md-4 control-label"># of Children</label>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" id="inputNOfChildren" placeholder="# of Children"
+                                           ng-model="createUsers.personalInfo.nOfChildren" name="nOfChildren" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.maritalStatus.$invalid && createUsersForm.maritalStatus.$touched}]">
+                                <!-- Marital Status -->
+                                <label for="inputMaritalStatus" class="col-md-4 control-label">Marital
+                                    Status</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputMaritalStatus"  name="maritalStatus" required
+                                            ng-model="createUsers.personalInfo.maritalStatus"
+                                            ng-options="option.name for option in createUsers.maritalStatusApi track by option.id" >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.scholarship.$invalid && createUsersForm.scholarship.$touched}]">
+                                <!-- Scholarship -->
+                                <label for="inputScholarship" class="col-md-4 control-label ">Scholarship</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputScholarship" name="scholarship" required
+                                            ng-model="createUsers.personalInfo.scholarship"
+                                            ng-options="option.name for option in createUsers.scholarshipApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.rh.$invalid && createUsersForm.rh.$touched}]">
+                                <!-- RH -->
+                                <label for="inputRH" class="col-md-4 control-label">RH</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="inputRH" name="rh" required
+                                            ng-model="createUsers.personalInfo.rh"
+                                            ng-options="option.name for option in createUsers.rhApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.propleInCharge.$invalid && createUsersForm.propleInCharge.$dirty}]">
+                                <!-- People in charge -->
+                                <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
+                                           placeholder="People in charge" ng-model="createUsers.personalInfo.peopleInCharge" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.socialStratum.$invalid && createUsersForm.socialStratum.$touched}]">
+                                <!-- Social Stratum  -->
+                                <label for="inputSocialStratum" class="col-md-4 control-label">Social Stratum</label>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="inputSocialStratum" name="socialStratum" required
+                                            ng-model="createUsers.personalInfo.socialStratum"
+                                            ng-options="option.name for option in createUsers.socialStratumApi ">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <legend>Contact Info</legend>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.skype.$invalid && createUsersForm.skype.$dirty}]">
+                                <!-- Skype Id -->
+                                <label for="inputSkype" class="col-md-4 control-label">Skype</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputSkype" placeholder="Skype" name="skype"
+                                           ng-model="createUsers.contactInfo.skype" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.personalEmail.$invalid && createUsersForm.personalEmail.$dirty}]">
+                                <!-- Personal Email -->
+                                <label for="inputPersonalEmail" class="col-md-4 control-label">Personal Email</label>
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" id="inputPersonalEmail" name="personalEmail"
+                                           placeholder="Personal Email" ng-model="createUsers.contactInfo.personalEmail" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.cellphone.$invalid && createUsersForm.cellphone.$dirty}]">
+                                <!-- Cellphone -->
+                                <label for="inputCellphone" class="col-md-4 control-label">Cellphone</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="inputCellphone" placeholder="Cellphone"
+                                           ng-model="createUsers.contactInfo.cellphone" name="cellphone" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.contactName.$invalid && createUsersForm.contactName.$dirty}]">
+                                <!-- Contact Name -->
+                                <label for="inputContactName" class="col-md-4 control-label">Contact Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="inputContactName" placeholder="Contact Name"
+                                           ng-model="createUsers.contactInfo.contactName" name="contactName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" >
+
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.contactPhoneName.$invalid && createUsersForm.contactPhoneName.$dirty}]">
+                                <!-- Phone Contact Name -->
+                                <label for="inputContactPhoneName" class="col-md-4 control-label">Contact Phone</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="inputContactPhoneName" name="contactPhoneName"
+                                           placeholder="Contact Phone" ng-model="createUsers.contactInfo.contactPhone">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <legend>Corporate Info</legend>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.seniority.$invalid && createUsersForm.seniority.$touched}]">
+                                <!-- Seniority -->
+                                <label for="inputSeniority" class="col-md-4 control-label">Seniority</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputSeniority" name="seniority" required
+                                            ng-model="createUsers.corporateInfo.seniority"
+                                            ng-options="option.name for option in createUsers.seniorityApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.hiredTime.$invalid && createUsersForm.hiredTime.$touched}]">
+                                <!-- Hired Time -->
+                                <label for="inputHiredTime" class="col-md-4 control-label">Hired Date</label>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time"
+                                           ng-model="createUsers.corporateInfo.hiredTime" name="hiredTime" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.salary.$invalid && createUsersForm.salary.$dirty}]">
+                                <!-- Salary -->
+                                <label for="inputSalary" class="col-md-4 control-label">Salary</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="number" class="form-control" id="inputSalary" placeholder="Salary"
+                                               ng-model="createUsers.corporateInfo.salary" name="salary" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"  ng-class="[{'has-error' : createUsersForm.corporateEmail.$invalid && createUsersForm.corporateEmail.$dirty}]">
+                                <!-- Corporate Email -->
+                                <label for="inputCorporateEmail" class="col-md-4 control-label">Corporate Email</label>
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" id="inputCorporateEmail" name="corporateEmail"
+                                           placeholder="Corporate Email" ng-model="createUsers.corporateInfo.corporateEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.project.$invalid && createUsersForm.project.$touched}]">
+                                <!-- Project -->
+                                <label for="inputProject" class="col-md-4 control-label">Project</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputProject" name="project" required
+                                            ng-model="createUsers.corporateInfo.project"
+                                            ng-options="option.name for option in createUsers.projectApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!-- Skill -->
+                            <label class="control-label col-md-12">Skill</label>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="form-group"  >
+                                <div class="col-md-3" ng-repeat="value in createUsers.skillsApi">
+                                    <label><input type="checkbox" name="skills.{{value.id}}" value="value.id"
+                                                  ng-model="createUsers.corporateInfo.skills[value.id]"
+                                                  ng-click="createUsers.extractSkills()">{{value.name}} </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <legend>Social Security</legend>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.afp.$invalid && createUsersForm.afp.$touched}]">
+                                <!-- AFP -->
+                                <label for="inputAFP" class="col-md-4 control-label">AFP</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputAFP" name="afp" required
+                                            ng-model="createUsers.securityInfo.afp"
+                                            ng-options="option.name for option in createUsers.afpApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.eps.$invalid && createUsersForm.eps.$touched}]">
+                                <!-- EPS -->
+                                <label for="inputEPS" class="col-md-4 control-label">EPS</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputEPS" name="eps" required
+                                            ng-model="createUsers.securityInfo.eps"
+                                            ng-options="option.name for option in createUsers.epsApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 alert alert-dismissible"
+                             ng-show="createUsers.postStatus.message"
+                             ng-class="[{'alert-success': !createUsers.postStatus.error} , {'alert-danger':createUsers.postStatus.error}]">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            {{createUsers.postStatus.message}}
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-4 alert alert-dismissible"
+                                ng-show="createUsersForm.$dirty && createUsersForm.$invalid &&  !createUsers.postStatus.postedForm"
+                                ng-class="[{'alert-warning' : !createUsersForm.$valid}]">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            Please fill in all the required information
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-offset-5">
+                            <button type="submit" class="btn btn-primary pull-right btn-block"
+                                    ng-class="[{'disabled' : createUsersForm.$invalid}]"
+                                    ng-disabled="createUsersForm.$invalid" >Create User</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

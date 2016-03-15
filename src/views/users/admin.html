@@ -1,0 +1,293 @@
+<!-- Page -->
+<div class="container" ng-controller="AdminUsersController as adminUsers">
+<h1>{{adminUsers.moduleName}} <small>administration</small></h1>
+    <div class="panel panel-primary container-z1">
+        <div class="panel-body">
+
+
+
+            <h3>Basic Config</h3>
+            <div class="row">
+                <!-- AFP -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>AFP</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Afp')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="afp in adminUsers.afpTableData">
+                            <td>{{afp.id}}</td>
+                            <td>{{afp.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Afp',afp.id,afp.name)">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- EPS-->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>EPS</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Eps')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="eps in adminUsers.epsTableData">
+                            <td>{{eps.id}}</td>
+                            <td>{{eps.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Eps',eps.id,eps.name)">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Project -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Project</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Project')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="project in adminUsers.projectTableData" data-target="#insertModal"
+                            data-toggle="modal" ng-click="adminUsers.setupModal('Project',project.id,project.name)">
+                            <td>{{project.id}}</td>
+                            <td>{{project.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Seniority-->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Seniority</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Seniority')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="seniority in adminUsers.seniorityTableData">
+                            <td>{{seniority.id}}</td>
+                            <td>{{seniority.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Seniority',seniority.id,seniority.name)">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- Skills -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Skils</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Skills')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="skills in adminUsers.skillsTableData">
+                            <td>{{skills.id}}</td>
+                            <td>{{skills.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Skills',skills.id,skills.name)">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h3>Param Tables</h3>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Social Security Email List</h5>
+                    <table class="table-stripped table-hover table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                                  data-toggle="modal" ng-click="adminUsers.setupModal('SocialSecurityEmails')">Create</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="socialSecurityEmail in adminUsers.socialSecutiryEmailTableData">
+                                <td>{{socialSecurityEmail.id}}</td>
+                                <td>{{socialSecurityEmail.name}}</td>
+                                <td><span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal(
+                                      'SocialSecurityEmails',socialSecurityEmail.id,socialSecurityEmail.name)">Update</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3>Master Tables</h3>
+            <div class="row">
+                <!-- Birth Place -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Birth Place</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                            <tr>
+                                <th>#</th><th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="birthPlace in adminUsers.birthPlaceTableData">
+                                <td>{{birthPlace.id}}</td>
+                                <td>{{birthPlace.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Country (Nationality)-->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Nationality</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th><th>Country</th><th>Nationality</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="nationality in adminUsers.nationalityTableData">
+                            <td>{{nationality.id}}</td>
+                            <td>{{nationality.name}}</td>
+                            <td>{{nationality.nationality}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <!-- Document Type -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Document Type</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th><th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="documentType in adminUsers.documentTypeTableData">
+                            <td>{{documentType.id}}</td>
+                            <td>{{documentType.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Country (Nationality)-->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Marital Status</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th><th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="maritalStatus in adminUsers.maritalStatusTableData">
+                            <td>{{maritalStatus.id}}</td>
+                            <td>{{maritalStatus.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <!-- Rh -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Rh</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th><th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="rh in adminUsers.rhTableData">
+                            <td>{{rh.id}}</td>
+                            <td>{{rh.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Scholarship -->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>Scholarship</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th><th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="scholarship in adminUsers.scholarshipTableData">
+                            <td>{{scholarship.id}}</td>
+                            <td>{{scholarship.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Intro -->
+    <insert-modal modal-name="{{adminUsers.modal.ModalHeader}}" record-id="{{adminUsers.modal.id}}"
+                  record-name="{{adminUsers.modal.name}}">
+    </insert-modal>
+
+</div>

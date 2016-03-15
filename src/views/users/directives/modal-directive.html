@@ -1,0 +1,64 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="insertModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalCtrl.reLoadModal()"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" ng-show="modalCtrl.recordId">Update {{modalCtrl.modalName}}</h4>
+                <h4 class="modal-title" ng-show="!modalCtrl.recordId">Create {{modalCtrl.modalName}}</h4>
+            </div>
+            <form name="createMasterRecordForm" class="form-horizontal" novalidate
+                  ng-submit="createMasterRecordForm.$valid && modalCtrl.validateFormData(modalCtrl.modalName)">
+                <div class="modal-body">
+
+                    <fieldset ng-show="!modalCtrl.postStatus.submitted">
+                        <!-- Update Field-->
+                        <div class="form-group"
+                             ng-class="[{'has-error': createMasterRecordForm.name.$invalid && createMasterRecordForm.name.$dirty}]"
+                             ng-show="modalCtrl.recordId">
+                            <!-- Name -->
+                            <label for="inputId" class="col-md-4 control-label text-primary">#
+                                {{modalCtrl.recordId}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputId"
+                                       placeholder="{{modalCtrl.recordName.toUpperCase()}}"
+                                       required ng-model="modalCtrl.name" name="name">
+                            </div>
+                        </div>
+                        <!-- Insert Field-->
+                        <div class="form-group"
+                             ng-class="[{'has-error': createMasterRecordForm.name.$invalid && createMasterRecordForm.name.$dirty}]"
+                             ng-show="!modalCtrl.recordId">
+                            <!-- Name -->
+                            <label for="inputName" class="col-md-4 control-label text-primary">New
+                                {{modalCtrl.modalName}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputName"
+                                       placeholder="{{modalCtrl.modalName.toUpperCase()}}"
+                                       required ng-model="modalCtrl.name" name="name">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="alert alert-dismissible"
+                         ng-class="[{'alert-success': !modalCtrl.postStatus.error && modalCtrl.postStatus.submitted}]"
+                            ng-show="modalCtrl.postStatus.submitted">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        {{modalCtrl.postStatus.message}}
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-show="!modalCtrl.postStatus.submitted">Cancel</button>
+                    <button type="submit" class="btn btn-primary" ng-class="[{'disabled' : createMasterRecordForm.$invalid}]"
+                            ng-disabled="createMasterRecordForm.$invalid" ng-show="!modalCtrl.postStatus.submitted">
+                        Save changes
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            ng-show="modalCtrl.postStatus.submitted" ng-click="modalCtrl.reLoadModal() && createMasterRecordForm.$setPristine()">
+                        Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

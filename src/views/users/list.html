@@ -1,0 +1,65 @@
+<div class="container" ng-controller="ListUsersController as listUsers">
+    <!-- Intro -->
+    <h1>{{listUsers.moduleName}}</h1>
+    <div class="panel panel-primary container-z1">
+        <div class="panel-body">
+
+            <!-- Filter-->
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <a href="#/users/create" class=" btn btn-default">Create new user</a>
+                </div>
+                <div class="col-md-10 text-right">
+                    <form class="form-inline" name="filterForm">
+                        <div class="form-group has-warning">
+                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="String"
+                                ng-model="stringFilter">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- Table -->
+            <table class="table-striped table-hover table">
+                <thead>
+                <tr>
+                    <th>{{listUsers.tableFields.id}}</th>
+                    <th>{{listUsers.tableFields.status}}</th>
+                    <th>{{listUsers.tableFields.name}}</th>
+                    <th>{{listUsers.tableFields.lastName}}</th>
+                    <th>{{listUsers.tableFields.projectName}}</th>
+
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
+                    <td>{{user.id}}</td>
+                    <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
+                        {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
+                    </td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+                    <td>{{user.project.name}}</td>
+
+                    <td><button class="btn btn-sm" ng-click="listUsers.changeUserStatus(user.id, user.status)"
+                                ng-class="[{'btn-success' : !user.status},{'btn-danger': user.status}]">
+                            {{user.status == 1 ? 'Inactivate' : 'Activate'}}
+                        </button>
+                        <button class="btn btn-sm btn-primary" >
+                            Update
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

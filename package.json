@@ -1,0 +1,38 @@
+{
+  "name": "humanity",
+  "version": "1.0.0",
+  "description": "despues la escribo",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yayobyte/yayobyte.github.io.git"
+  },
+  "author": "Yayobyte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yayobyte/yayobyte.github.io/issues"
+  },
+  "homepage": "https://github.com/yayobyte/yayobyte.github.io#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-bootstrap": "^0.12.2",
+    "angular-resource": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.1",
+    "normalize": "^0.3.1",
+    "ui-router": "^0.2.15"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "ng-annotate": "^1.2.1",
+    "angular-resource": "^1.5.0"
+  }
+}
