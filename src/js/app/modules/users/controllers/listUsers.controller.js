@@ -4,11 +4,10 @@
         .controller('ListUsersController',listUsersController)
         .factory("UserList", usersApi);
 
-    var usersApiEndpoint = "http://localhost:1337/user" ;
     var moduleName = "Users";
 
     function usersApi ($resource) {
-        return $resource(usersApiEndpoint);
+        return $resource(globalConfig.apiEndpoint);
     }
 
     function listUsersController (UserList, UsersFactory){

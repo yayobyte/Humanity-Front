@@ -5,8 +5,7 @@
     angular.module('Humanity')
         .factory("SkillsFactory", skillsApi);
 
-    var sailsEndpoint = "http://localhost:1337";
-    var skillsEndPoint = sailsEndpoint + '/skills/:id';
+    var skillsEndPoint = globalConfig.apiEndpoint + '/skills/:id';
 
     function skillsApi ($resource){
         return $resource (skillsEndPoint, {id:'@id'}, { update: {method:'PUT' }});
