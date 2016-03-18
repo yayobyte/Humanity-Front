@@ -10,6 +10,16 @@
     var afpEndpoint = sailsEndpoint + "/afp/:id" ;
 
     function afpApi ($resource) {
-        return $resource(afpEndpoint, {id:'@id'}, { update: {method:'PUT' }});
+        return $resource(afpEndpoint, {id:'@id'}, {
+            update: {
+                method:'PUT'
+            },
+            get : {
+                method: 'GET',
+                headers : {
+                    'Access-Control-Allow-Origin' : '*'
+                }
+            }
+        });
     }
 })();
