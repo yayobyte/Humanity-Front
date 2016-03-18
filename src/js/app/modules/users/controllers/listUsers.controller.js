@@ -7,7 +7,7 @@
     var moduleName = "Users";
 
     function usersApi ($resource) {
-        return $resource(globalConfig.apiEndpoint);
+        return $resource(globalConfig.apiEndpoint + '/user');
     }
 
     function listUsersController (UserList, UsersFactory){
