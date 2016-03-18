@@ -1,3 +1,3 @@
 var globalConfig = {
-    apiEndpoint : 'http://humanityback-yayobyte.rhcloud.com'
+    apiEndpoint : 'http://localhost:1337'
 };
