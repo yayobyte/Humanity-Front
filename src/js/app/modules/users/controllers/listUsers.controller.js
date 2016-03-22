@@ -17,9 +17,13 @@
         vm.moduleName = moduleName;
         vm.tableFields = {
             "id" : "#",
-            "name" : "name",
+            "documentNumber" : "ID",
+            "hiredTime" : "Hired",
+            "name" : "Name",
             "lastName" : "Last Name",
             "status" : "Status",
+            "salary" : "Salary",
+            "seniority" : "Position",
             "projectName" : "Project Name"
         };
 

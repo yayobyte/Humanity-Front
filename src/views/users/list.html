@@ -28,9 +28,13 @@
                 <thead>
                 <tr>
                     <th>{{listUsers.tableFields.id}}</th>
+                    <th>{{listUsers.tableFields.documentNumber}}</th>
                     <th>{{listUsers.tableFields.status}}</th>
+                    <th>{{listUsers.tableFields.hiredTime}}</th>
                     <th>{{listUsers.tableFields.name}}</th>
                     <th>{{listUsers.tableFields.lastName}}</th>
+                    <th>{{listUsers.tableFields.salary}}</th>
+                    <th>{{listUsers.tableFields.seniority}}</th>
                     <th>{{listUsers.tableFields.projectName}}</th>
 
                     <th>Actions</th>
@@ -39,11 +43,15 @@
                 <tbody >
                 <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
                     <td>{{user.id}}</td>
+                    <td>{{user.documentNumber}}</td>
                     <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
                         {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
                     </td>
+                    <td>{{user.hiredTime | date : format : mediumDate }}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+                    <td>{{user.salary}}</td>
+                    <td>{{user.seniority.name}}</td>
                     <td>{{user.project.name}}</td>
 
                     <td><button class="btn btn-sm" ng-click="listUsers.changeUserStatus(user.id, user.status)"
@@ -53,13 +61,13 @@
                         <button class="btn btn-sm btn-primary" >
                             Update
                         </button>
+                        <button class="btn btn-sm btn-info" >
+                            <span class="glyphicon glyphicon-save"></span> certificate
+                        </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
-
-
-
         </div>
     </div>
 </div>
