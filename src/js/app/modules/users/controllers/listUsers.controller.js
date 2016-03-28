@@ -34,6 +34,16 @@
         vm.changeUserStatus = function (userId, userStatus) {
             vm.postObject.id = userId;
             vm.postObject.status = (userStatus == 1 ? 0 : 1);
+
+            if(userStatus == 1) {
+                // Ask for confirmation before deactivating a user
+                // If confirmation is cancelled exit the deactivation procedure
+                if (!confirm("Are you sure you want to deactivate this user?")) {
+                    return;
+                }
+            }
+
+            // If activating a user or the procedure passed confirmation, save the data
             UsersFactory.save(vm.postObject, function (response){
                 vm.postStatus  =  response;
                 vm.postStatus.message = "User successfully created";
@@ -41,7 +51,7 @@
                 UserList.query(function(data){
                     vm.tableData = data;
                 });
-            },function (error){
+            }, function (error){
                 vm.postStatus = error;
                 vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
                 vm.postStatus.error = true;
