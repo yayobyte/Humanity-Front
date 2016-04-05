@@ -10,7 +10,7 @@
         return $resource(globalConfig.apiEndpoint + '/user');
     }
 
-    function listUsersController (UserList, UsersFactory){
+    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory, DownloadCertificationFactory){
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
@@ -58,5 +58,30 @@
                 vm.postStatus.postedForm = true;
             });
         };
+
+        vm.getCertification = function (userIdentification, typeOfCertification){
+            console.log(userIdentification, typeOfCertification);
+            userIdentification = (userIdentification != undefined) ? userIdentification : '0';
+            var certificateAction = (typeOfCertification == 'labor') ? globalConfig.apiRoutes.generateLaborAction : globalConfig.apiRoutes.generateSeveranceAction;
+            GenerateCertificationFactory.query({action : certificateAction, id: userIdentification}, vm.getSuccess, vm.getError);
+        };
+
+        vm.getSuccess = function (response){
+            vm.postStatus  =  response[0];
+            var fileId = vm.postStatus.tempFileId;
+            console.log('file: ' +  fileId);
+            DownloadCertificationFactory.query({file : fileId}, vm.downloadSuccess, vm.getError);
+        };
+        vm.downloadSuccess = function (response){
+            console.log('Que cuca');
+        };
+
+        vm.getError = function (error){
+            console.log(error);
+            vm.postStatus = error;
+            vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
+            vm.postStatus.error = true;
+        };
+
     }
 })();

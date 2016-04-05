@@ -39,6 +39,7 @@
                     <th>{{listUsers.tableFields.projectName}}</th>
 
                     <th>Actions</th>
+                    <th>Certifications</th>
                 </tr>
                 </thead>
                 <tbody >
@@ -62,8 +63,13 @@
                         <button class="btn btn-sm btn-primary" >
                             Update
                         </button>
-                        <button class="btn btn-sm btn-info" >
-                            <span class="glyphicon glyphicon-save"></span> certificate
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-default" ng-click="listUsers.getCertification(user.documentNumber, 'labor')">
+                            <span class="glyphicon glyphicon-save"></span> Labor
+                        </button>
+                        <button class="btn btn-sm btn-default" ng-click="listUsers.getCertification(user.documentNumber, 'severance')">
+                            <span class="glyphicon glyphicon-save" ></span> Severance
                         </button>
                     </td>
                 </tr>

@@ -4,7 +4,7 @@
 (function (){
     angular.module('Humanity')
         .factory('GenerateCertificationFactory' , generateCertification);
-    var generationEndPoint = globalConfig.apiEndpoint + globalConfig.apiRoutes.generateLaborCertification;
+    var generationEndPoint = globalConfig.apiEndpoint + globalConfig.apiRoutes.generateCertification;
 
 
     function generateCertification ($resource){
