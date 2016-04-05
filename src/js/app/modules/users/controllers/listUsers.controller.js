@@ -10,7 +10,7 @@
         return $resource(globalConfig.apiEndpoint + '/user');
     }
 
-    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory, DownloadCertificationFactory){
+    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory){
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
@@ -69,8 +69,7 @@
         vm.getSuccess = function (response){
             vm.postStatus  =  response[0];
             var fileId = vm.postStatus.tempFileId;
-            console.log('file: ' +  fileId);
-            DownloadCertificationFactory.query({file : fileId}, vm.downloadSuccess, vm.getError);
+            window.open(globalConfig.apiEndpoint + globalConfig.apiRoutes.downloadCertification.replace(':file' , fileId));
         };
         vm.downloadSuccess = function (response){
             console.log('Que cuca');
