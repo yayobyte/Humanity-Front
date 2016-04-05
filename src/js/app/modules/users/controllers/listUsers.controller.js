@@ -60,19 +60,21 @@
         };
 
         vm.getCertification = function (userIdentification, typeOfCertification){
-            console.log(userIdentification, typeOfCertification);
-            userIdentification = (userIdentification != undefined) ? userIdentification : '0';
-            var certificateAction = (typeOfCertification == 'labor') ? globalConfig.apiRoutes.generateLaborAction : globalConfig.apiRoutes.generateSeveranceAction;
-            GenerateCertificationFactory.query({action : certificateAction, id: userIdentification}, vm.getSuccess, vm.getError);
+            if (userIdentification) {
+                var certificateAction = (typeOfCertification == 'labor') ? globalConfig.apiRoutes.generateLaborAction : globalConfig.apiRoutes.generateSeveranceAction;
+                GenerateCertificationFactory.query({
+                    action: certificateAction,
+                    id: userIdentification
+                }, vm.getSuccess, vm.getError);
+            }else{
+                console.warn('userIdentification not sent');
+            }
         };
 
         vm.getSuccess = function (response){
             vm.postStatus  =  response[0];
             var fileId = vm.postStatus.tempFileId;
             window.open(globalConfig.apiEndpoint + globalConfig.apiRoutes.downloadCertification.replace(':file' , fileId));
-        };
-        vm.downloadSuccess = function (response){
-            console.log('Que cuca');
         };
 
         vm.getError = function (error){
