@@ -10,7 +10,7 @@
         return $resource(globalConfig.apiEndpoint + '/user');
     }
 
-    function listUsersController (UserList, UsersFactory){
+    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory){
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
@@ -58,5 +58,31 @@
                 vm.postStatus.postedForm = true;
             });
         };
+
+        vm.getCertification = function (userIdentification, typeOfCertification){
+            if (userIdentification) {
+                var certificateAction = (typeOfCertification == 'labor') ? globalConfig.apiRoutes.generateLaborAction : globalConfig.apiRoutes.generateSeveranceAction;
+                GenerateCertificationFactory.query({
+                    action: certificateAction,
+                    id: userIdentification
+                }, vm.getSuccess, vm.getError);
+            }else{
+                console.warn('userIdentification not sent');
+            }
+        };
+
+        vm.getSuccess = function (response){
+            vm.postStatus  =  response[0];
+            var fileId = vm.postStatus.tempFileId;
+            window.open(globalConfig.apiEndpoint + globalConfig.apiRoutes.downloadCertification.replace(':file' , fileId));
+        };
+
+        vm.getError = function (error){
+            console.log(error);
+            vm.postStatus = error;
+            vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
+            vm.postStatus.error = true;
+        };
+
     }
 })();
