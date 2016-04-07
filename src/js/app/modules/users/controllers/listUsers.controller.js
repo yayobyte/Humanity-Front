@@ -10,10 +10,11 @@
         return $resource(globalConfig.apiEndpoint + '/user');
     }
 
-    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory){
+    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory, GenerateSeveranceFactory){
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
+        vm.download = {};
         vm.moduleName = moduleName;
         vm.tableFields = {
             "id" : "#",
@@ -61,27 +62,39 @@
 
         vm.getCertification = function (userIdentification, typeOfCertification){
             if (userIdentification) {
-                var certificateAction = (typeOfCertification == 'labor') ? globalConfig.apiRoutes.generateLaborAction : globalConfig.apiRoutes.generateSeveranceAction;
-                GenerateCertificationFactory.query({
-                    action: certificateAction,
-                    id: userIdentification
-                }, vm.getSuccess, vm.getError);
+                switch (typeOfCertification) {
+                    case 'labor' :
+                        GenerateCertificationFactory.save({
+                            userId: userIdentification
+                        }, vm.getSuccess, vm.getError);
+                        break;
+                    case 'severance' :
+                        GenerateSeveranceFactory.save({
+                            userId: userIdentification
+                        }, vm.getSuccess, vm.getError);
+                        break;
+                    default :
+                        console.warn('Wrong certification requested');
+                        break;
+                }
             }else{
                 console.warn('userIdentification not sent');
             }
         };
 
         vm.getSuccess = function (response){
-            vm.postStatus  =  response[0];
-            var fileId = vm.postStatus.tempFileId;
+            var fileId = response.tempFileId;
+            vm.download.message = "Certification created successfully" ;
+            console.log(vm.download.message);
+            vm.download.error = false;
             window.open(globalConfig.apiEndpoint + globalConfig.apiRoutes.downloadCertification.replace(':file' , fileId));
         };
 
         vm.getError = function (error){
-            console.log(error);
-            vm.postStatus = error;
-            vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
-            vm.postStatus.error = true;
+            vm.download = error;
+            vm.download.message = "Error: " + error.data;
+            console.log(vm.download.message);
+            vm.download.error = true;
         };
 
     }
