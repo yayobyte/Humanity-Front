@@ -1,30 +1,54 @@
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="insertModal">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="severanceModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalCtrl.reLoadModal()"><span
                     aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" ng-show="modalCtrl.recordId">Update {{modalCtrl.modalName}}</h4>
+                <h4 class="modal-title">Cesantías Certification</h4>
             </div>
+
             <form name="createMasterRecordForm" class="form-horizontal" novalidate
-                  ng-submit="createMasterRecordForm.$valid && modalCtrl.validateFormData(modalCtrl.modalName)">
+                  ng-submit="createMasterRecordForm.$valid && modalCtrl.requestDownload()">
                 <div class="modal-body">
 
                     <fieldset ng-show="!modalCtrl.postStatus.submitted">
-
-                        <!-- Insert Field-->
-                        <div class="form-group"
-                             ng-class="[{'has-error': createMasterRecordForm.name.$invalid && createMasterRecordForm.name.$dirty}]"
-                             ng-show="!modalCtrl.recordId">
-                            <!-- Name -->
-                            <label for="inputName" class="col-md-4 control-label text-primary">New
-                                {{modalCtrl.modalName}}</label>
+                        <!-- Name disabled Field-->
+                        <div class="form-group">
+                            <label class="control-label col-md-4" for="disabledInput">Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputName"
-                                       placeholder="{{modalCtrl.modalName.toUpperCase()}}"
-                                       required ng-model="modalCtrl.name" name="name">
+                                <input class="form-control" id="disabledInput" type="text"  disabled=""
+                                       ng-model="modalCtrl.userName" name="name">
                             </div>
                         </div>
+
+                        <!-- Subject Field-->
+                        <div class="form-group"
+                             ng-class="[{'has-error': createMasterRecordForm.subject.$invalid && createMasterRecordForm.subject.$dirty}]"
+                             ng-show="!modalCtrl.recordId">
+                            <!-- Name -->
+                            <label for="inputSubject" class="col-md-4 control-label text-primary">Subject</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputSubject"
+                                       placeholder="Retiro  Parcial/Total de Cesantías para Vivienda/Estudio"
+                                       required ng-model="modalCtrl.subject" name="subject">
+                            </div>
+                        </div>
+
+                        <!-- Amount Field-->
+                        <div class="form-group"
+                             ng-class="[{'has-error': createMasterRecordForm.amount.$invalid && createMasterRecordForm.amount.$dirty}]"
+                             ng-show="!modalCtrl.recordId">
+                            <!-- Name -->
+                            <label for="inputAmount" class="col-md-4 control-label text-primary">Amount</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input type="text" class="form-control" id="inputAmount"
+                                           required ng-model="modalCtrl.amount" name="amount">
+                                </div>
+                            </div>
+                        </div>
+
                     </fieldset>
                     <div class="alert alert-dismissible"
                          ng-class="[{'alert-success': !modalCtrl.postStatus.error && modalCtrl.postStatus.submitted}]"
@@ -33,7 +57,6 @@
                         {{modalCtrl.postStatus.message}}
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" ng-show="!modalCtrl.postStatus.submitted">Cancel</button>
                     <button type="submit" class="btn btn-primary" ng-class="[{'disabled' : createMasterRecordForm.$invalid}]"

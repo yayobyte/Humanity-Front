@@ -15,6 +15,7 @@
         vm.postStatus = {};
         vm.postObject = {};
         vm.download = {};
+        vm.modal = {};
         vm.moduleName = moduleName;
         vm.tableFields = {
             "id" : "#",
@@ -60,7 +61,7 @@
             });
         };
 
-        vm.getCertification = function (userIdentification, typeOfCertification){
+        vm.getCertification = function (userIdentification, typeOfCertification, userName){
             if (userIdentification) {
                 switch (typeOfCertification) {
                     case 'labor' :
@@ -69,9 +70,8 @@
                         }, vm.getSuccess, vm.getError);
                         break;
                     case 'severance' :
-                        GenerateSeveranceFactory.save({
-                            userId: userIdentification
-                        }, vm.getSuccess, vm.getError);
+                        vm.modal.userId = userIdentification;
+                        vm.modal.userName = userName;
                         break;
                     default :
                         console.warn('Wrong certification requested');

@@ -70,7 +70,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="" ng-click="listUsers.getCertification(user.documentNumber, 'severance')">
+                                            <a href="" ng-click="listUsers.getCertification(user.documentNumber, 'severance',
+                                                user.name + ' ' + user.firstLastName + ' ' + user.secondLastName)"
+                                               data-target="#severanceModal" data-toggle="modal">
                                                 <span class="glyphicon glyphicon-save"></span>  Cesantías
                                             </a>
                                         </li>
@@ -94,4 +96,7 @@
             </div>
         </div>
     </div>
+
+    <modal-severance-certificate user-id="{{listUsers.modal.userId}}" user-name="{{listUsers.modal.userName}}">
+    </modal-severance-certificate>
 </div>
