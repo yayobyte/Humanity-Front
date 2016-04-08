@@ -2,8 +2,6 @@
     <h1>{{editUsers.moduleName}}
         <small>{{editUsers.pageName}}</small>
     </h1>
-    {{editUsers}}
-
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
 
@@ -215,7 +213,7 @@
                                 <div class="col-md-2">
                                     <select class="form-control" id="inputSocialStratum" name="socialStratum" required
                                             ng-model="editUsers.personalInfo.socialStratum"
-                                            ng-options="option.value for option in editUsers.socialStratumApi ">
+                                            ng-options="option.name for option in editUsers.socialStratumApi ">
                                     </select>
                                 </div>
                             </div>
