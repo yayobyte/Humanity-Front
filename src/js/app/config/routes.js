@@ -11,6 +11,9 @@
                 .when('/users/create',{
                     templateUrl: 'html/users/create.html'
                 })
+                .when('/users/:id/edit',{
+                    templateUrl: 'html/users/edit.html'
+                })
                 .when('/users/list',{
                     templateUrl: 'html/users/list.html'
                 })

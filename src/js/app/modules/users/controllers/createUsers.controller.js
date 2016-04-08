@@ -20,7 +20,7 @@
     ];
 
 
-    function CreateUsersController(DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
+    function CreateUsersController(SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
                                    EpsFactory, SkillsFactory, UsersFactory){
         var vm = this;

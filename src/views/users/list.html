@@ -59,9 +59,9 @@
                                 ng-class="[{'btn-success' : !user.status},{'btn-danger': user.status}]">
                             {{user.status == 1 ? 'Inactivate' : 'Activate'}}
                         </button>
-                        <button class="btn btn-sm btn-primary" >
+                        <a class="btn btn-sm btn-primary" ng-href="#/users/{{user.id}}/edit" >
                             Update
-                        </button>
+                        </a>
                         <button class="btn btn-sm btn-info" >
                             <span class="glyphicon glyphicon-save"></span> certificate
                         </button>
