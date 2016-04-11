@@ -1,0 +1,18 @@
+<form action="/user/uploadavatar">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group"
+                 ng-class="[{'has-error' : createUsersForm.documentNumber.$invalid && createUsersForm.documentNumber.$dirty}]">
+                <img class="img-thumbnail center-block" src="./img/avatar.svg">
+                <br>
+                <div class="input-group">
+                <input type="file" class="form-control center-block" id="inputDocumentNumber" placeholder="Select Avatar" width="100%"
+                           ng-model="createUsers.personalInfo.documentNumber" name="documentNumber" required style="margin: 0 auto">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Upload Avatar</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+    </div>
+</form>
