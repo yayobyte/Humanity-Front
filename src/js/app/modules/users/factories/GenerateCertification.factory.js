@@ -8,6 +8,6 @@
 
 
     function generateCertification ($resource){
-        return $resource(generationEndPoint, { action: '@action', id:'@id'}, { update: {method:'PUT' }});
+        return $resource(generationEndPoint, { id:'@id'}, { update: {method:'PUT' }});
     }
 })();
