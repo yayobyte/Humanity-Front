@@ -67,22 +67,34 @@
             for (var key in userForm) {
                 var elem = userForm[key];
 
+                // Look for chaged fields
                 if (typeof(elem) == 'object' && elem.hasOwnProperty('$dirty') && elem.$dirty === true) {
                     var modelValue = null;
-                    console.log(elem);
 
-                    if (elem.$name == 'socialStratum') {
-                        modelValue = elem.$modelValue.id;
-                    }
-                    else {
-                        modelValue = elem.$modelValue;
+                    // On these fields save just the id and not the whole object
+                    switch (elem.$name) {
+                        case 'socialStratum':
+                        case 'documentType':
+                        case 'birthPlace':
+                        case 'nationality':
+                        case 'maritalStatus':
+                        case 'scholarship':
+                        case 'socialStratum':
+                        case 'rh':
+                        case 'seniority':
+                        case 'project':
+                        case 'afp':
+                        case 'eps':
+                            modelValue = elem.$modelValue.id;
+                            break;
+
+                        default:
+                            modelValue = elem.$modelValue;
                     }
 
                     vm.postObject[elem.$name] = modelValue;
                 }
             }
-
-            console.log(vm.postObject);
 
             UsersFactory.update(vm.postObject, {id: $routeParams.id}, function (response){
                 vm.postStatus = response;
