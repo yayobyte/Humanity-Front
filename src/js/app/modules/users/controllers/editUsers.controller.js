@@ -67,7 +67,7 @@
             for (var key in userForm) {
                 var elem = userForm[key];
 
-                // Look for chaged fields
+                // Look for changed fields
                 if (typeof(elem) == 'object' && elem.hasOwnProperty('$dirty') && elem.$dirty === true) {
                     var modelValue = null;
 
@@ -98,7 +98,7 @@
 
             UsersFactory.update(vm.postObject, {id: $routeParams.id}, function (response){
                 vm.postStatus = response;
-                vm.postStatus.message = "User successfully created";
+                vm.postStatus.message = "User successfully updated";
                 vm.postStatus.error = false;
             },function (error){
                 vm.postStatus = error;

@@ -2,8 +2,6 @@
     <h1>{{editUsers.moduleName}}
         <small>{{editUsers.pageName}}</small>
     </h1>
-    {{editUsers}}
-    {{editUsers.$dirty}}
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
 
@@ -217,7 +215,6 @@
                                             ng-model="editUsers.userInfo.socialStratum"
                                             ng-options="option.id for option in editUsers.socialStratumApi track by option.id">
                                     </select>
-                                    <label>{{editUsers.userInfo.socialStratum}}</label>
                                 </div>
                             </div>
                         </div>
