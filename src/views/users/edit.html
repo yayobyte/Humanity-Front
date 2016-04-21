@@ -2,6 +2,8 @@
     <h1>{{editUsers.moduleName}}
         <small>{{editUsers.pageName}}</small>
     </h1>
+    {{editUsers}}
+    {{editUsers.$dirty}}
     <div class="panel panel-primary container-z1">
         <div class="panel-body">
 
@@ -18,7 +20,7 @@
                                 <label for="inputDocumentType" class="col-md-4 control-label">Document Type</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputDocumentType" name="documentType" required
-                                            ng-model="editUsers.personalInfo.documentType"
+                                            ng-model="editUsers.userInfo.documentType"
                                             ng-options="option.name for option in editUsers.documentTypeApi track by option.id">
                                     </select>
                                 </div>
@@ -31,7 +33,7 @@
                                 <label for="inputDocumentNumber" class="col-md-4 control-label">Document Number</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputDocumentNumber" placeholder="Document Number"
-                                           ng-model="editUsers.personalInfo.documentNumber" name="documentNumber" required>
+                                           ng-model="editUsers.userInfo.documentNumber" name="documentNumber" required>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +48,7 @@
                                 <label for="inputLastName1" class="col-md-4 control-label">First Last Name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name"
-                                           ng-model="editUsers.personalInfo.firstLastName" name="lastName" required>
+                                           ng-model="editUsers.userInfo.firstLastName" name="lastName" required>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +60,7 @@
                                 <label for="inputLastName2" class="col-md-4 control-label">Second Last Name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputLastName2" placeholder="Second Last Name"
-                                           ng-model="editUsers.personalInfo.secondLastName" name="secondLastName" required>
+                                           ng-model="editUsers.userInfo.secondLastName" name="secondLastName" required>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +74,7 @@
                                 <label for="inputName" class="col-md-4 control-label">Name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputName" placeholder="Name" required
-                                           ng-model="editUsers.personalInfo.name" name="inputName">
+                                           ng-model="editUsers.userInfo.name" name="inputName">
                                 </div>
                             </div>
                         </div>
@@ -82,7 +84,7 @@
                                 <label for="inputAddress" class="col-md-4 control-label">Address</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputAddress" placeholder="Address"
-                                           ng-model="editUsers.personalInfo.address" name="address" required>
+                                           ng-model="editUsers.userInfo.address" name="address" required>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +97,7 @@
                                 <label for="inputBirthDay" class="col-md-4 control-label">Birthday</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday"
-                                           ng-model="editUsers.personalInfo.birthday" name="birthDay" required>
+                                           ng-model="editUsers.userInfo.birthday" name="birthDay" required>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +107,7 @@
                                 <label for="inputAge" class="col-md-4 control-label">Age</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputAge" placeholder="Age"
-                                           ng-model="editUsers.personalInfo.age" name="age" required>
+                                           ng-model="editUsers.userInfo.age" name="age" required>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +121,7 @@
                                 <label for="inputBirthPlace" class="col-md-4 control-label">Birth place</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputBirthPlace" required
-                                            ng-model="editUsers.personalInfo.birthPlace" name="birthPlace"
+                                            ng-model="editUsers.userInfo.birthPlace" name="birthPlace"
                                             ng-options="option.name for option in editUsers.birthPlaceApi track by option.id">
                                     </select>
                                 </div>
@@ -131,7 +133,7 @@
                                 <label for="inputNationality" class="col-md-4 control-label">Nationality</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputNationality" name="nationality" required
-                                            ng-model="editUsers.personalInfo.nationality"
+                                            ng-model="editUsers.userInfo.nationality"
                                             ng-options="option.nationality for option in editUsers.nationalityApi track by option.id">
                                     </select>
                                 </div>
@@ -147,7 +149,7 @@
                                 <label for="inputNOfChildren" class="col-md-4 control-label"># of Children</label>
                                 <div class="col-md-4">
                                     <input type="number" class="form-control" id="inputNOfChildren" placeholder="# of Children"
-                                           ng-model="editUsers.personalInfo.nOfChildren" name="nOfChildren" required>
+                                           ng-model="editUsers.userInfo.nOfChildren" name="nOfChildren" required>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +160,7 @@
                                     Status</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputMaritalStatus"  name="maritalStatus" required
-                                            ng-model="editUsers.personalInfo.maritalStatus"
+                                            ng-model="editUsers.userInfo.maritalStatus"
                                             ng-options="option.name for option in editUsers.maritalStatusApi track by option.id" >
                                     </select>
                                 </div>
@@ -174,7 +176,7 @@
                                 <label for="inputScholarship" class="col-md-4 control-label ">Scholarship</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputScholarship" name="scholarship" required
-                                            ng-model="editUsers.personalInfo.scholarship"
+                                            ng-model="editUsers.userInfo.scholarship"
                                             ng-options="option.name for option in editUsers.scholarshipApi track by option.id">
                                     </select>
                                 </div>
@@ -186,7 +188,7 @@
                                 <label for="inputRH" class="col-md-4 control-label">RH</label>
                                 <div class="col-md-4">
                                     <select class="form-control" id="inputRH" name="rh" required
-                                            ng-model="editUsers.personalInfo.rh"
+                                            ng-model="editUsers.userInfo.rh"
                                             ng-options="option.name for option in editUsers.rhApi track by option.id">
                                     </select>
                                 </div>
@@ -202,7 +204,7 @@
                                 <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
                                 <div class="col-md-4">
                                     <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
-                                           placeholder="People in charge" ng-model="editUsers.personalInfo.peopleInCharge" required>
+                                           placeholder="People in charge" ng-model="editUsers.userInfo.peopleInCharge" required>
                                 </div>
                             </div>
                         </div>
@@ -212,9 +214,10 @@
                                 <label for="inputSocialStratum" class="col-md-4 control-label">Social Stratum</label>
                                 <div class="col-md-2">
                                     <select class="form-control" id="inputSocialStratum" name="socialStratum" required
-                                            ng-model="editUsers.personalInfo.socialStratum"
-                                            ng-options="option.name for option in editUsers.socialStratumApi ">
+                                            ng-model="editUsers.userInfo.socialStratum"
+                                            ng-options="option.id for option in editUsers.socialStratumApi track by option.id">
                                     </select>
+                                    <label>{{editUsers.userInfo.socialStratum}}</label>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +234,7 @@
                                 <label for="inputSkype" class="col-md-4 control-label">Skype</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputSkype" placeholder="Skype" name="skype"
-                                           ng-model="editUsers.contactInfo.skype" required>
+                                           ng-model="editUsers.userInfo.skype" required>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +244,7 @@
                                 <label for="inputPersonalEmail" class="col-md-4 control-label">Personal Email</label>
                                 <div class="col-md-8">
                                     <input type="email" class="form-control" id="inputPersonalEmail" name="personalEmail"
-                                           placeholder="Personal Email" ng-model="editUsers.contactInfo.personalEmail" required>
+                                           placeholder="Personal Email" ng-model="editUsers.userInfo.personalEmail" required>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +258,7 @@
                                 <label for="inputCellphone" class="col-md-4 control-label">Cellphone</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputCellphone" placeholder="Cellphone"
-                                           ng-model="editUsers.contactInfo.cellphone" name="cellphone" required>
+                                           ng-model="editUsers.userInfo.cellphone" name="cellphone" required>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +273,7 @@
                                 <label for="inputContactName" class="col-md-4 control-label">Contact Name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="inputContactName" placeholder="Contact Name"
-                                           ng-model="editUsers.contactInfo.contactName" name="contactName">
+                                           ng-model="editUsers.userInfo.contactName" name="contactName">
                                 </div>
                             </div>
                         </div>
@@ -281,7 +284,7 @@
                                 <label for="inputContactPhoneName" class="col-md-4 control-label">Contact Phone</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputContactPhoneName" name="contactPhoneName"
-                                           placeholder="Contact Phone" ng-model="editUsers.contactInfo.contactPhone">
+                                           placeholder="Contact Phone" ng-model="editUsers.userInfo.contactPhone">
                                 </div>
                             </div>
                         </div>
@@ -296,7 +299,7 @@
                                 <label for="inputSeniority" class="col-md-4 control-label">Seniority</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputSeniority" name="seniority" required
-                                            ng-model="editUsers.corporateInfo.seniority"
+                                            ng-model="editUsers.userInfo.seniority"
                                             ng-options="option.name for option in editUsers.seniorityApi track by option.id">
                                     </select>
                                 </div>
@@ -309,7 +312,7 @@
                                 <label for="inputHiredTime" class="col-md-4 control-label">Hired Date</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time"
-                                           ng-model="editUsers.corporateInfo.hiredTime" name="hiredTime" required>
+                                           ng-model="editUsers.userInfo.hiredTime" name="hiredTime" required>
                                 </div>
                             </div>
                         </div>
@@ -324,7 +327,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
                                         <input type="number" class="form-control" id="inputSalary" placeholder="Salary"
-                                               ng-model="editUsers.corporateInfo.salary" name="salary" required>
+                                               ng-model="editUsers.userInfo.salary" name="salary" required>
                                     </div>
                                 </div>
                             </div>
@@ -335,7 +338,7 @@
                                 <label for="inputCorporateEmail" class="col-md-4 control-label">Corporate Email</label>
                                 <div class="col-md-8">
                                     <input type="email" class="form-control" id="inputCorporateEmail" name="corporateEmail"
-                                           placeholder="Corporate Email" ng-model="editUsers.corporateInfo.corporateEmail">
+                                           placeholder="Corporate Email" ng-model="editUsers.userInfo.corporateEmail">
                                 </div>
                             </div>
                         </div>
@@ -349,7 +352,7 @@
                                 <label for="inputProject" class="col-md-4 control-label">Project</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputProject" name="project" required
-                                            ng-model="editUsers.corporateInfo.project"
+                                            ng-model="editUsers.userInfo.project"
                                             ng-options="option.name for option in editUsers.projectApi track by option.id">
                                     </select>
                                 </div>
@@ -367,7 +370,7 @@
                             <div class="form-group"  >
                                 <div class="col-md-3" ng-repeat="value in editUsers.skillsApi">
                                     <label><input type="checkbox" name="skills.{{value.id}}" value="value.id"
-                                                  ng-model="editUsers.corporateInfo.skills[value.id]"
+                                                  ng-model="editUsers.userInfo.skills[value.id]"
                                                   ng-click="editUsers.extractSkills()">{{value.name}} </label>
                                 </div>
                             </div>
@@ -383,7 +386,7 @@
                                 <label for="inputAFP" class="col-md-4 control-label">AFP</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputAFP" name="afp" required
-                                            ng-model="editUsers.securityInfo.afp"
+                                            ng-model="editUsers.userInfo.afp"
                                             ng-options="option.name for option in editUsers.afpApi track by option.id">
                                     </select>
                                 </div>
@@ -395,7 +398,7 @@
                                 <label for="inputEPS" class="col-md-4 control-label">EPS</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputEPS" name="eps" required
-                                            ng-model="editUsers.securityInfo.eps"
+                                            ng-model="editUsers.userInfo.eps"
                                             ng-options="option.name for option in editUsers.epsApi track by option.id">
                                     </select>
                                 </div>
@@ -422,7 +425,7 @@
                         <div class="col-sm-2 col-sm-offset-5">
                             <button type="submit" class="btn btn-primary pull-right btn-block"
                                     ng-class="[{'disabled' : editUsersForm.$invalid}]"
-                                    ng-disabled="editUsersForm.$invalid" >Create User</button>
+                                    ng-disabled="editUsersForm.$invalid" >Save User</button>
                         </div>
                     </div>
                 </fieldset>
