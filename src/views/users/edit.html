@@ -67,12 +67,12 @@
 
                     <div class="row">
                         <div class="col-md-6" >
-                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.inputName.$invalid && editUsersForm.inputName.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.name.$invalid && editUsersForm.name.$dirty}]">
                                 <!-- Name -->
-                                <label for="inputName" class="col-md-4 control-label">Name</label>
+                                <label for="name" class="col-md-4 control-label">Name</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name" required
-                                           ng-model="editUsers.userInfo.name" name="inputName">
+                                    <input type="text" class="form-control" id="name" placeholder="Name" required
+                                           ng-model="editUsers.userInfo.name" name="name">
                                 </div>
                             </div>
                         </div>

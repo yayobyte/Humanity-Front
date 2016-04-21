@@ -42,12 +42,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group"
-                                 ng-class="[{'has-error' : createUsersForm.lastName.$invalid && createUsersForm.lastName.$dirty}]">
+                                 ng-class="[{'has-error' : createUsersForm.firstLastName.$invalid && createUsersForm.firstLastName.$dirty}]">
                                 <!-- First Last Name -->
-                                <label for="inputLastName1" class="col-md-4 control-label">First Last Name</label>
+                                <label for="firstLastName" class="col-md-4 control-label">First Last Name</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputLastName1" placeholder="First Last Name"
-                                           ng-model="createUsers.personalInfo.firstLastName" name="lastName" required>
+                                    <input type="text" class="form-control" id="firstLastName" placeholder="First Last Name"
+                                           ng-model="createUsers.personalInfo.firstLastName" name="firstLastName" required>
                                 </div>
                             </div>
                         </div>
@@ -68,12 +68,12 @@
 
                     <div class="row">
                         <div class="col-md-6" >
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.inputName.$invalid && createUsersForm.inputName.$dirty}]">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.name.$invalid && createUsersForm.name.$dirty}]">
                                 <!-- Name -->
-                                <label for="inputName" class="col-md-4 control-label">Name</label>
+                                <label for="name" class="col-md-4 control-label">Name</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name" required
-                                           ng-model="createUsers.personalInfo.name" name="inputName">
+                                    <input type="text" class="form-control" id="name" placeholder="Name" required
+                                           ng-model="createUsers.personalInfo.name" name="name">
                                 </div>
                             </div>
                         </div>
