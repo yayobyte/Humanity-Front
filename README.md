@@ -2,8 +2,8 @@
 ### Before installation 
 > Stuff needed before having this run
 
-1. Install backend repo, you can continue but the app will not have data to query [https://github.com/yayobyte/Humanity-Back](Back End Repo)
-2. Install : [https://nodejs.org/en/](Node JS) with NPM package manager
+1. Install backend repo, you can continue but the app will not have data to query [Back End Repo](https://github.com/yayobyte/Humanity-Back)
+2. Install : [NODE JS](https://nodejs.org/en/) with NPM package manager
 3. Install gulp `sudo npm install -g gulp`
 
 ###Installation
