@@ -5,6 +5,7 @@
 1. Install backend repo, you can continue but the app will not have data to query [Back End Repo](https://github.com/yayobyte/Humanity-Back)
 2. Install : [NODE JS](https://nodejs.org/en/) with NPM package manager
 3. Install gulp `sudo npm install -g gulp`
+4. Install git
 
 ###Installation
 1. Install a HTTP server (Apache, NGINX, etc) 
