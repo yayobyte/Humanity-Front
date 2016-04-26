@@ -1,7 +1,7 @@
 'use strict';
 (function(){
     angular.module('Humanity')
-        .controller('ListUsersController',listUsersController)
+        .controller('ListUsersController', ['UserList', 'UsersFactory', 'GenerateCertificationFactory', 'GenerateSeveranceFactory','$confirm',listUsersController])
         .factory("UserList", usersApi);
 
     var moduleName = "Users";
@@ -10,7 +10,7 @@
         return $resource(globalConfig.apiEndpoint + '/user');
     }
 
-    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory, GenerateSeveranceFactory){
+    function listUsersController (UserList, UsersFactory, GenerateCertificationFactory, GenerateSeveranceFactory, $confirm){
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
@@ -36,17 +36,20 @@
         vm.changeUserStatus = function (userId, userStatus) {
             vm.postObject.id = userId;
             vm.postObject.status = (userStatus == 1 ? 0 : 1);
-
+            var done = false; 
             if(userStatus == 1) {
-                // Ask for confirmation before deactivating a user
-                // If confirmation is cancelled exit the deactivation procedure
-                if (!confirm("Are you sure you want to deactivate this user?")) {
-                    return;
-                }
+              
+                $confirm({text: 'Are you sure you want to deactivate this user?'})
+                    .then(function() {
+                      vm.savePostObject();
+                });
+            }else{
+                vm.savePostObject();
             }
+        };
 
-            // If activating a user or the procedure passed confirmation, save the data
-            UsersFactory.save(vm.postObject, function (response){
+        vm.savePostObject = function (){
+          UsersFactory.save(vm.postObject, function (response){
                 vm.postStatus  =  response;
                 vm.postStatus.message = "User successfully created";
                 vm.postStatus.error = false;
@@ -59,7 +62,7 @@
                 vm.postStatus.error = true;
                 vm.postStatus.postedForm = true;
             });
-        };
+        }
 
         vm.getCertification = function (userIdentification, typeOfCertification, userName){
             if (userIdentification) {
