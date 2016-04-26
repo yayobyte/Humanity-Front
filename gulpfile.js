@@ -98,8 +98,7 @@ gulp.task('default', [
     'html:views',
     'fonts',
     'img',
-    'watchers',
-    'webserver'
+    'watchers'
 ])
 
 
