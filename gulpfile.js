@@ -3,6 +3,7 @@
  */
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var connect = require('gulp-connect');
 var nodeModules = './node_modules'
 var src = './src';
 var dist = './dist';
@@ -15,8 +16,9 @@ gulp.task('js:vendors', function() {
         nodeModules + '/angular-resource/angular-resource.min.js',
         nodeModules + '/angular-route/angular-route.min.js',
         nodeModules + '/jquery/dist/jquery.min.js',
-        nodeModules + '/bootstrap/dist/js/bootstrap.min.js'
-        //nodeModules + '/angular-bootstrap/**/*.min.js'
+        nodeModules + '/bootstrap/dist/js/bootstrap.min.js',
+        nodeModules + '/angular-ui-bootstrap/ui-bootstrap-tpls.min.js',
+        nodeModules + '/angular-confirm/angular-confirm.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest(dist + '/js'));
@@ -31,6 +33,10 @@ gulp.task('js:app', function (){
         ;
 });
 
+gulp.task('webserver', function() {
+  connect.server();
+});
+ 
 /****************** CSS **********************/
 gulp.task('css:styles', function() {
     return gulp.src([

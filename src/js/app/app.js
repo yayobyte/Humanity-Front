@@ -9,7 +9,9 @@
         'usersModule',
         'masterTables',
         'ngResource',
-        'ngRoute'
+        'ngRoute',
+        'ui.bootstrap',
+        'angular-confirm'
        // 'ui.bootstrap'
     ]);
 })();
