@@ -36,7 +36,7 @@
         vm.changeUserStatus = function (userId, userStatus) {
             vm.postObject.id = userId;
             vm.postObject.status = (userStatus == 1 ? 0 : 1);
-            var done = false; 
+           
             if(userStatus == 1) {
               
                 $confirm({text: 'Are you sure you want to deactivate this user?'})
