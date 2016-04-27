@@ -18,7 +18,9 @@ gulp.task('js:vendors', function() {
         nodeModules + '/jquery/dist/jquery.min.js',
         nodeModules + '/bootstrap/dist/js/bootstrap.min.js',
         nodeModules + '/angular-ui-bootstrap/ui-bootstrap-tpls.min.js',
-        nodeModules + '/angular-confirm/angular-confirm.js'
+        nodeModules + '/angular-confirm/angular-confirm.js',
+        nodeModules + '/ng-flow/dist/ng-flow-standalone.min.js'
+
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest(dist + '/js'));

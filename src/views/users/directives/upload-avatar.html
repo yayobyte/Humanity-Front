@@ -1,17 +1,27 @@
 <form action="/user/uploadavatar">
-    <div class="row">
+    <div class="row center-block">
         <div class="col-md-6 col-md-offset-3">
-            <div class="form-group"
-                 ng-class="[{'has-error' : createUsersForm.documentNumber.$invalid && createUsersForm.documentNumber.$dirty}]">
-                <img class="img-thumbnail center-block" src="./img/avatar.svg">
-                <br>
-                <div class="input-group">
-                <input type="file" class="form-control center-block" id="inputDocumentNumber" placeholder="Select Avatar" width="100%"
-                           ng-model="createUsers.personalInfo.documentNumber" name="documentNumber" required style="margin: 0 auto">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Upload Avatar</button>
-                    </span>
-                </div><!-- /input-group -->
+            <div flow-init="{target:'/uploader', maxChunkRetries: 1,
+                            chunkRetryInterval: 5000,
+                            simultaneousUploads: 4,
+                            singleFile: true}"
+                flow-files-submitted="$flow.upload()"
+                flow-file-success="$file.msg = $message">
+                
+                <div class="thumbnail" ng-hide="$flow.files.length">
+                    <img src="./img/avatar.svg" />
+                </div>
+                <div class="thumbnail" ng-show="$flow.files.length">
+                  <img flow-img="$flow.files[0]" />
+                </div>
+                <div>
+                  <span class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
+                  <span class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
+                  <span class="btn btn-danger" ng-show="$flow.files.length"
+                     ng-click="$flow.cancel()">
+                    Remove
+                  </span>
+                </div>
             </div>
         </div>
     </div>
