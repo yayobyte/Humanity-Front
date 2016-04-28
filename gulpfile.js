@@ -3,6 +3,7 @@
  */
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var connect = require('gulp-connect');
 var nodeModules = './node_modules'
 var src = './src';
 var dist = './dist';
@@ -96,4 +97,7 @@ gulp.task('default', [
     'watchers'
 ])
 
-
+/********************* SERVER **************************/
+gulp.task('webserver', function() {
+    connect.server();
+});
