@@ -18,7 +18,6 @@
         $scope.uploader = {};
         $scope.upload = function () {
             $scope.uploader.flow.upload();
-            console.log($scope.uploader.flow.files[0]);
         }
     }
 })();

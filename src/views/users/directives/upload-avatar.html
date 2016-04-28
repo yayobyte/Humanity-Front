@@ -1,10 +1,22 @@
 <div class="row center-block">
     <div class="col-md-6 col-md-offset-3">
-        <div flow-name="uploader.flow" flow-init="{maxChunkRetries: 1,
+        <div flow-name="uploader.flow" flow-init="{target: 'http://localhost:1337/user/uploadavatar', 
+                        testChunks:false,
+                        maxChunkRetries: 1, 
                         chunkRetryInterval: 5000,
                         simultaneousUploads: 4,
                         singleFile: true}"
             flow-file-success="$file.msg = $message" style="text-align:center">
+
+            <table>
+              <tr ng-repeat="file in uploader.flow.files">
+                  <td>
+                    <div class="alert alert-success" ng-show="file.msg" style="min-width: 500%;">
+                      {{file.msg}}
+                    </div>
+                  </td>
+              </tr>
+            </table>
             
             <div class="thumbnail" ng-hide="uploader.flow.files.length" style="display:inline-block">
                 <img src="./img/avatar.svg" />
@@ -20,8 +32,12 @@
                 Remove
               </span>
 
-               <button class="btn" ng-show="uploader.flow.files.length" ng-click="upload()">Upload</button>
+              <button class="btn" ng-show="uploader.flow.files.length" ng-click="upload()">Upload</button>
+
+              
             </div>
+
+            
         </div>
     </div>
 </div>
