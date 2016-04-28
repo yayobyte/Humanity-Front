@@ -4,15 +4,15 @@
                         chunkRetryInterval: 5000,
                         simultaneousUploads: 4,
                         singleFile: true}"
-            flow-file-success="$file.msg = $message">
+            flow-file-success="$file.msg = $message"  style="text-align: center">
             
-            <div class="thumbnail" ng-hide="uploader.flow.files.length">
+            <div class="thumbnail" ng-hide="uploader.flow.files.length" style="display: inline-block">
                 <img src="./img/avatar.svg" />
             </div>
-            <div class="thumbnail" ng-show="uploader.flow.files.length">
+            <div class="thumbnail" ng-show="uploader.flow.files.length" style="display: inline-block">
               <img flow-img="uploader.flow.files[0]" />
             </div>
-            <div>
+            <div style="display: inline-block">
               <span class="btn" ng-hide="uploader.flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
               <span class="btn" ng-show="uploader.flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
               <span class="btn btn-danger" ng-show="uploader.flow.files.length"
