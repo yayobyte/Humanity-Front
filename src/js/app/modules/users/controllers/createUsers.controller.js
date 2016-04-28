@@ -20,7 +20,7 @@
     ];
 
 
-    function CreateUsersController(DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
+    function CreateUsersController(SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
                                    EpsFactory, SkillsFactory, UsersFactory){
         var vm = this;
@@ -94,7 +94,7 @@
         });
 
         vm.extractSkills = function (){
-
+            //TODO: Convert this in a reusable component
             vm.postObject.skill = [];
             for (var property in vm.corporateInfo.skills){
                 if(vm.corporateInfo.skills[property] == true){
@@ -104,7 +104,7 @@
         };
 
         vm.validateFormData = function (){
-            console.log('Creating new user');
+            //TODO: Convert this in a reusable component
 
             angular.extend(vm.postObject, vm.personalInfo);
             vm.postObject.documentType = vm.personalInfo.documentType.id ;

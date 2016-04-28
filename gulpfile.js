@@ -33,10 +33,6 @@ gulp.task('js:app', function (){
         ;
 });
 
-gulp.task('webserver', function() {
-  connect.server();
-});
- 
 /****************** CSS **********************/
 gulp.task('css:styles', function() {
     return gulp.src([
@@ -101,4 +97,7 @@ gulp.task('default', [
     'watchers'
 ])
 
-
+/********************* SERVER **************************/
+gulp.task('webserver', function() {
+    connect.server();
+});
