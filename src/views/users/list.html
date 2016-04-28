@@ -38,6 +38,7 @@
                     <th>{{listUsers.tableFields.seniority}}</th>
                     <th>{{listUsers.tableFields.projectName}}</th>
 
+                    <th>Certifications</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -54,16 +55,39 @@
                     <td>{{user.salary}}</td>
                     <td>{{user.seniority.name}}</td>
                     <td>{{user.project.name}}</td>
-
-                    <td><button class="btn btn-sm" ng-click="listUsers.changeUserStatus(user.id, user.status)"
+                    <td>
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                    <a href="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        Download
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" style="right: 0">
+                                        <li>
+                                            <a href="" ng-click="listUsers.getCertification(user.documentNumber, 'labor')">
+                                                <span class="glyphicon glyphicon-save"></span> Job Certificate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" ng-click="listUsers.getCertification(user.documentNumber, 'severance',
+                                                user.name + ' ' + user.firstLastName + ' ' + user.secondLastName)"
+                                               data-target="#severanceModal" data-toggle="modal">
+                                                <span class="glyphicon glyphicon-save"></span>  Cesantías
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm" ng-click="listUsers.changeUserStatus(user.id, user.status)"
                                 ng-class="[{'btn-success' : !user.status},{'btn-danger': user.status}]">
                             {{user.status == 1 ? 'Inactivate' : 'Activate'}}
                         </button>
                         <a class="btn btn-sm btn-primary" ng-href="#/users/{{user.id}}/edit" >
                             Update
-                        </a>
-                        <button class="btn btn-sm btn-info" >
-                            <span class="glyphicon glyphicon-save"></span> certificate
                         </button>
                     </td>
                 </tr>
@@ -72,4 +96,7 @@
             </div>
         </div>
     </div>
+
+    <modal-severance-certificate user-id="{{listUsers.modal.userId}}" user-name="{{listUsers.modal.userName}}">
+    </modal-severance-certificate>
 </div>
