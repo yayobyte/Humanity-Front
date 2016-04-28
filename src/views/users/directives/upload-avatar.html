@@ -6,15 +6,15 @@
                             simultaneousUploads: 4,
                             singleFile: true}"
                 flow-files-submitted="$flow.upload()"
-                flow-file-success="$file.msg = $message">
-                
-                <div class="thumbnail" ng-hide="$flow.files.length">
+                flow-file-success="$file.msg = $message" style="text-align: center">
+
+                <div class="thumbnail" ng-hide="$flow.files.length" style="display: inline-block">
                     <img src="./img/avatar.svg" />
                 </div>
-                <div class="thumbnail" ng-show="$flow.files.length">
+                <div class="thumbnail" ng-show="$flow.files.length" style="display: inline-block">
                   <img flow-img="$flow.files[0]" />
                 </div>
-                <div>
+                <div style="display: inline-block">
                   <span class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
                   <span class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
                   <span class="btn btn-danger" ng-show="$flow.files.length"
