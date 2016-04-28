@@ -17,7 +17,6 @@
     function uploadAvatarController($scope) {
         $scope.uploader = {};
         $scope.upload = function () {
-            alert('ingreso');
             $scope.uploader.flow.upload();
             console.log($scope.uploader.flow.files[0]);
         }
