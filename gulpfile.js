@@ -3,7 +3,6 @@
  */
 var concat = require('gulp-concat');
 var gulp = require('gulp');
-var connect = require('gulp-connect');
 var nodeModules = './node_modules'
 var src = './src';
 var dist = './dist';
@@ -33,10 +32,6 @@ gulp.task('js:app', function (){
         ;
 });
 
-gulp.task('webserver', function() {
-  connect.server();
-});
- 
 /****************** CSS **********************/
 gulp.task('css:styles', function() {
     return gulp.src([

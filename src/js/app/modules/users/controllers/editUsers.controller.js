@@ -102,44 +102,17 @@
                     if (skillModel == 'skills'){
                         vm.extractSkills();
                     }else {
-                        // On these fields save just the id and not the whole object
-                        switch (elem.$name) {
-                            case 'socialStratum':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'documentType':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'birthPlace':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'nationality':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'maritalStatus':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'scholarship':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'rh':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'seniority':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'project':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'afp':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            case 'eps':
-                                modelValue = elem.$modelValue.id;
-                                break;
-                            default:
-                                modelValue = elem.$modelValue;
+                        // On these fields save just the id and not the whole object for this Select lists
+                        var elementsName = [
+                            'socialStratum', 'documentType', 'birthPlace', 'nationality', 'maritalStatus', 'scholarship',
+                            'rh', 'seniority', 'project', 'afp', 'eps'
+                        ];
+                        if (elementsName.indexOf(elem.$name) >= 0){
+                            modelValue = elem.$modelValue.id;
+                        }else{
+                            modelValue = elem.$modelValue;
                         }
+
                         vm.postObject[elem.$name] = modelValue;
                     }
 
