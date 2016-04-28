@@ -11,7 +11,10 @@
         'ngResource',
         'ngRoute',
         'ui.bootstrap',
-        'angular-confirm'
+        'angular-confirm',
+        'flow'
        // 'ui.bootstrap'
     ]);
+
+    
 })();
