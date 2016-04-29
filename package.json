@@ -28,7 +28,8 @@
     "normalize": "^0.3.1",
     "angular-route": "^1.5.1",
     "gulp": "^3.9.1",
-    "angular-confirm" : "1.2.3"
+    "angular-confirm" : "1.2.3",
+    "ng-flow" : "2.1.4"
   },
   "devDependencies": {
     "angular-resource": "^1.5.0",
@@ -38,6 +39,7 @@
     "gulp-connect": "^3.2.2",
     "ng-annotate": "^1.2.1",
     "angular-ui-bootstrap": "^0.14.3",
-    "angular-confirm" : "1.2.3"
+    "angular-confirm" : "1.2.3",
+    "ng-flow" : "2.1.4"
   }
 }
