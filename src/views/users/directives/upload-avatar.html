@@ -1,6 +1,6 @@
 <div class="row center-block">
     <div class="col-md-6 col-md-offset-3">
-        <div flow-name="uploader.flow" flow-init="{target: 'http://localhost:1337/user/uploadavatar', 
+        <div flow-name="uploader.flow" flow-init="{target: urlService, 
                         testChunks:false,
                         maxChunkRetries: 1, 
                         chunkRetryInterval: 5000,
@@ -22,7 +22,7 @@
                 <img src="./img/avatar.svg" />
             </div>
             <div class="thumbnail" ng-show="uploader.flow.files.length" style="display:inline-block">
-              <img flow-img="uploader.flow.files[0]" />
+              <img flow-img="uploader.flow.files[0]" style="max-height:140px;" />
             </div>
             <div>
               <span class="btn" ng-hide="uploader.flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
