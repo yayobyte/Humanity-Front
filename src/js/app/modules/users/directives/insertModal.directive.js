@@ -20,7 +20,8 @@
         return directive;
     }
 
-    function modalController (AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory,ParamSocialSecurityEmailFactory) {
+    function modalController (AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory,
+                              ParamSocialSecurityEmailFactory, FcFactory) {
         var vm = this;
         vm.postStatus = {};
         vm.submitted = false;
@@ -57,6 +58,8 @@
                 case 'SocialSecurityEmails' :
                     ParamSocialSecurityEmailFactory.save(vm.postStatus.data, vm.postSuccess, vm.postError);
                     break;
+                case 'Fc' :
+                    FcFactory.save(vm.postStatus.data, vm.postSuccess, vm.postError);
                 default :
                     vm.postError({status: 503 , data: {summary:"Error finding provider"}});
             }

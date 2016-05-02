@@ -17,7 +17,7 @@
 
     function editUsersController($scope, $routeParams, SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
-                                   EpsFactory, SkillsFactory, UsersFactory) {
+                                   EpsFactory, SkillsFactory, UsersFactory, FcFactory) {
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
@@ -71,6 +71,9 @@
         EpsFactory.query(function (data){
             vm.epsApi = data;
         });
+        FcFactory.query(function (data) {
+            vm.fcApi = data;
+        });
         SkillsFactory.query(function (data){
             vm.skillsApi = data;
         });
@@ -105,7 +108,7 @@
                         // On these fields save just the id and not the whole object for this Select lists
                         var elementsName = [
                             'socialStratum', 'documentType', 'birthPlace', 'nationality', 'maritalStatus', 'scholarship',
-                            'rh', 'seniority', 'project', 'afp', 'eps'
+                            'rh', 'seniority', 'project', 'afp', 'eps', 'fc'
                         ];
                         if (elementsName.indexOf(elem.$name) >= 0){
                             modelValue = elem.$modelValue.id;

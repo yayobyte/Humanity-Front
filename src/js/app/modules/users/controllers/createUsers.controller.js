@@ -22,7 +22,7 @@
 
     function CreateUsersController(SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
-                                   EpsFactory, SkillsFactory, UsersFactory){
+                                   EpsFactory, SkillsFactory, UsersFactory, FcFactory){
         var vm = this;
         vm.moduleName = moduleName;
         vm.pageName = "create";
@@ -58,6 +58,9 @@
         vm.socialStratumApi = socialStratumApi;
         vm.statusApi = statusApi;
 
+        FcFactory.query(function (data) {
+            vm.fcApi = data;
+        });
 
         DocumentTypeFactory.query(function (data){
             vm.documentTypeApi = data;
@@ -123,6 +126,7 @@
 
             vm.postObject.afp = vm.securityInfo.afp.id;
             vm.postObject.eps = vm.securityInfo.eps.id;
+            vm.postObject.fc = vm.securityInfo.fc.id;
 
             UsersFactory.save(vm.postObject, function (response){
                 vm.postStatus  =  response;

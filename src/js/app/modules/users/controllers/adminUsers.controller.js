@@ -7,7 +7,7 @@
 
     function adminUsersController (
         BirthPlaceFactory, NationalityFactory, DocumentTypeFactory, MaritalStatusFactory, RhFactory, ScholarshipFactory,
-        AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory, ParamSocialSecurityEmailFactory
+        AfpFactory, EpsFactory, ProjectFactory, SeniorityFactory, SkillsFactory, ParamSocialSecurityEmailFactory, FcFactory
     )
     {
         var vm = this;
@@ -22,6 +22,9 @@
         EpsFactory.query(function(data){
             vm.epsTableData = data;
         });
+        FcFactory.query(function(data){
+            vm.fcTableData = data;
+        });
         ProjectFactory.query(function(data){
             vm.projectTableData = data;
         });
@@ -34,6 +37,7 @@
         ParamSocialSecurityEmailFactory.query(function (data){
             vm.socialSecutiryEmailTableData = data;
         });
+
 
         //Master Tables
         BirthPlaceFactory.query(function(data){
@@ -64,10 +68,7 @@
             vm.modal.id = id;
             vm.modal.name = name;
         };
-
-        vm.createNewConfigRecord = function (tableName){
-
-        };
+        
 
     }
 })();
