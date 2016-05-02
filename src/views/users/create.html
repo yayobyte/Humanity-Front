@@ -407,6 +407,21 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.afp.$invalid && createUsersForm.afp.$touched}]">
+                                <!-- FC -->
+                                <label for="inputFC" class="col-md-4 control-label">FC</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputFC" name="fc" required
+                                            ng-model="createUsers.securityInfo.fc"
+                                            ng-options="option.name for option in createUsers.fcApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <hr>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 alert alert-dismissible"
@@ -421,7 +436,6 @@
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             Please fill in all the required information
                         </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-2 col-sm-offset-5">
                             <button type="submit" class="btn btn-primary pull-right btn-block"

@@ -58,6 +58,31 @@
                     </table>
                 </div>
 
+                <!-- FC-->
+                <div class="col-md-4 col-md-offset-1">
+                    <h5>FC</h5>
+                    <table class="table-striped table-hover table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions <span class="btn label label-success btn-xs pull-right" data-target="#insertModal"
+                                              data-toggle="modal" ng-click="adminUsers.setupModal('Fc')">Create</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="fc in adminUsers.fcTableData">
+                            <td>{{fc.id}}</td>
+                            <td>{{fc.name}}</td>
+                            <td>
+                                <span class="btn label label-primary btn-xs" data-target="#insertModal"
+                                      data-toggle="modal" ng-click="adminUsers.setupModal('Fc',fc.id,fc.name)">Update</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Project -->
                 <div class="col-md-4 col-md-offset-1">
                     <h5>Project</h5>
