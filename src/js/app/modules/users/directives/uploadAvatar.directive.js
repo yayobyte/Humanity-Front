@@ -14,7 +14,11 @@
 
     }
 
-    function uploadAvatarController() {
-
+    function uploadAvatarController($scope) {
+        $scope.uploader = {};
+        $scope.urlService = globalConfig.apiEndpoint + globalConfig.apiRoutes.uploadAvatar;
+        $scope.upload = function () {
+            $scope.uploader.flow.upload();
+        }
     }
 })();

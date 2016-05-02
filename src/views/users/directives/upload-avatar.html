@@ -1,28 +1,44 @@
-<form action="/user/uploadavatar">
-    <div class="row center-block">
-        <div class="col-md-6 col-md-offset-3">
-            <div flow-init="{target:'/uploader', maxChunkRetries: 1,
-                            chunkRetryInterval: 5000,
-                            simultaneousUploads: 4,
-                            singleFile: true}"
-                flow-files-submitted="$flow.upload()"
-                flow-file-success="$file.msg = $message">
-                
-                <div class="thumbnail" ng-hide="$flow.files.length">
-                    <img src="./img/avatar.svg" />
-                </div>
-                <div class="thumbnail" ng-show="$flow.files.length">
-                  <img flow-img="$flow.files[0]" />
-                </div>
-                <div>
-                  <span class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
-                  <span class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
-                  <span class="btn btn-danger" ng-show="$flow.files.length"
-                     ng-click="$flow.cancel()">
-                    Remove
-                  </span>
-                </div>
+<div class="row center-block">
+    <div class="col-md-6 col-md-offset-3">
+        <div flow-name="uploader.flow" flow-init="{target: urlService, 
+                        testChunks:false,
+                        maxChunkRetries: 1, 
+                        chunkRetryInterval: 5000,
+                        simultaneousUploads: 4,
+                        singleFile: true}"
+            flow-file-success="$file.msg = $message" style="text-align:center">
+
+            <table>
+              <tr ng-repeat="file in uploader.flow.files">
+                  <td>
+                    <div class="alert alert-success" ng-show="file.msg" style="min-width: 500%;">
+                      {{file.msg}}
+                    </div>
+                  </td>
+              </tr>
+            </table>
+            
+            <div class="thumbnail" ng-hide="uploader.flow.files.length" style="display:inline-block">
+                <img src="./img/avatar.svg" />
             </div>
+            <div class="thumbnail" ng-show="uploader.flow.files.length" style="display:inline-block">
+              <img flow-img="uploader.flow.files[0]" style="max-height:140px;" />
+            </div>
+            <div>
+              <span class="btn" ng-hide="uploader.flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
+              <span class="btn" ng-show="uploader.flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
+              <span class="btn btn-danger" ng-show="uploader.flow.files.length"
+                 ng-click="uploader.flow.cancel()">
+                Remove
+              </span>
+
+              <button class="btn" ng-show="uploader.flow.files.length" ng-click="upload()">Upload</button>
+
+              
+            </div>
+
+            
         </div>
     </div>
-</form>
+</div>
+
