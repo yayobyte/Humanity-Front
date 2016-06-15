@@ -8,7 +8,8 @@
 
     var rhEndPoint = globalConfig.apiEndpoint + '/rh/:id';
 
-    function rhApi ($resource){
-        return $resource (rhEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function rhApi (r) {
+        return r(rhEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    rhApi.$inject = ['$resource'];
 })();

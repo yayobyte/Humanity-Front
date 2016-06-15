@@ -22,7 +22,7 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputDocumentType" name="documentType" required
                                             ng-model="createUsers.personalInfo.documentType"
-                                            ng-options="option.name for option in createUsers.documentTypeApi track by option.id">
+                                            ng-options="item.id as item.name for item in (createUsers.documentTypeApi)">
 
                                     </select>
                                 </div>

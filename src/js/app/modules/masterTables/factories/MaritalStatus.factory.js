@@ -8,7 +8,8 @@
 
     var maritalStatusEndPoint = globalConfig.apiEndpoint + "/maritalstatus/:id";
 
-    function maritalStatusApi ($resource){
-        return $resource (maritalStatusEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function maritalStatusApi (r) {
+        return r(maritalStatusEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    maritalStatusApi.$inject = ['$resource'];
 })();

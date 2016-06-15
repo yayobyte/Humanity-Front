@@ -7,7 +7,8 @@
 
     var scholarshipEndPoint = globalConfig.apiEndpoint + "/scholarship/:id";
 
-    function scholarshipApi ($resource){
-        return $resource (scholarshipEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function scholarshipApi (r) {
+        return r(scholarshipEndPoint, {id:'@id', sort:'precedence'}, { update: {method:'PUT' }});
     }
+    scholarshipApi.$inject = ['$resource'];
 })();

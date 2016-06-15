@@ -8,8 +8,8 @@
 
     var birthPlaceApiEndpoint = globalConfig.apiEndpoint + "/birthplace/:id" ;
 
-    function birthPlaceApi ($resource) {
-        return $resource(birthPlaceApiEndpoint, {id:'@id'}, { update: {method:'PUT' }});
+    function birthPlaceApi (r) {
+        return r(birthPlaceApiEndpoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
-
+    birthPlaceApi.$inject = ['$resource'];
 })();

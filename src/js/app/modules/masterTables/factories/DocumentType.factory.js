@@ -2,14 +2,15 @@
  * Consumes the Document Type table
  */
 'use strict';
+
 (function (){
     angular.module('Humanity')
-        .factory('DocumentTypeFactory',nationalityApi);
+        .factory('DocumentTypeFactory',documentTypeApi);
 
     var nationalityApiEndpoint = globalConfig.apiEndpoint + "/documenttype/:id" ;
 
-    function nationalityApi ($resource) {
-        return $resource(nationalityApiEndpoint, {id:'@id'}, { update: {method:'PUT' }});
+    function documentTypeApi (r) {
+        return r(nationalityApiEndpoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
-
+    documentTypeApi.$inject = ['$resource'];
 })();
