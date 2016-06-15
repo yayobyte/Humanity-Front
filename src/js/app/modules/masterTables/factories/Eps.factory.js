@@ -7,8 +7,9 @@
         .factory("EpsFactory", epsApi);
 
     var epsEndPoint = globalConfig.apiEndpoint + "/eps/:id";
-
-    function epsApi ($resource) {
-        return $resource (epsEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    
+    function epsApi (r) {
+        return r(epsEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    epsApi.$inject = ['$resource'];     
 })();

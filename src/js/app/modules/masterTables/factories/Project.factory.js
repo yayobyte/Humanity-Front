@@ -8,7 +8,8 @@
 
     var projectEndPoint = globalConfig.apiEndpoint + '/project/:id';
 
-    function projectApi ($resource){
-        return $resource (projectEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function projectApi (r) {
+        return r(projectEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    projectApi.$inject = ['$resource'];
 })();

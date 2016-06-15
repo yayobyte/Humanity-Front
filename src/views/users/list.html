@@ -32,8 +32,8 @@
                     <th>{{listUsers.tableFields.documentNumber}}</th>
                     <th>{{listUsers.tableFields.status}}</th>
                     <th>{{listUsers.tableFields.hiredTime}}</th>
-                    <th>{{listUsers.tableFields.name}}</th>
                     <th>{{listUsers.tableFields.lastName}}</th>
+                    <th>{{listUsers.tableFields.name}}</th>
                     <th>{{listUsers.tableFields.salary}}</th>
                     <th>{{listUsers.tableFields.seniority}}</th>
                     <th>{{listUsers.tableFields.projectName}}</th>
@@ -43,15 +43,15 @@
                 </tr>
                 </thead>
                 <tbody >
-                <tr ng-repeat="user in listUsers.tableData | filter : stringFilter">
+                <tr ng-repeat="user in listUsers.tableData | filter : stringFilter | orderBy: 'firstLastName'">
                     <td>{{user.id}}</td>
                     <td>{{user.documentNumber}}</td>
                     <td><span class="label" ng-class="[{'label-success' : user.status},{'label-danger': !user.status}]">
                         {{user.status == 1 ? 'Active' : 'Inactive'}}</span>
                     </td>
                     <td>{{user.hiredTime | date : format : mediumDate }}</td>
-                    <td>{{user.name}}</td>
                     <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+                    <td>{{user.name}}</td>
                     <td>{{user.salary}}</td>
                     <td>{{user.seniority.name}}</td>
                     <td>{{user.project.name}}</td>

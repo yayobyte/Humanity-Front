@@ -8,8 +8,8 @@
 
     var nationalityApiEndpoint = globalConfig.apiEndpoint + "/country/:id" ;
 
-    function nationalityApi ($resource) {
-        return $resource(nationalityApiEndpoint, {id:'@id'}, { update: {method:'PUT' }});
+    function nationalityApi (r) {
+        return r(nationalityApiEndpoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
-
+    nationalityApi.$inject = ['$resource'];
 })();

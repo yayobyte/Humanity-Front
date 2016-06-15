@@ -1,5 +1,5 @@
 /**
- * Consumes the EPS Table
+ * Consumes the FC Table
  */
 
 (function (){
@@ -8,7 +8,8 @@
 
     var fcEndPoint = globalConfig.apiEndpoint + "/fc/:id";
 
-    function fcApi ($resource) {
-        return $resource (fcEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function fcApi (r) {
+        return r(fcEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    fcApi.$inject = ['$resource']; 
 })();

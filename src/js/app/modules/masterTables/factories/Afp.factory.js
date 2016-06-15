@@ -8,17 +8,18 @@
 
     var afpEndpoint = globalConfig.apiEndpoint + "/afp/:id" ;
 
-    function afpApi ($resource) {
-        return $resource(afpEndpoint, {id:'@id'}, {
+    function afpApi (r) {
+        return r(afpEndpoint, {id:'@id', sort:'name'}, { 
             update: {
-                method:'PUT'
-            },
-            get : {
-                method: 'GET',
-                headers : {
-                    'Access-Control-Allow-Origin' : '*'
-                }
-            }
+                method:'PUT' 
+            }, 
+            get: {
+                method:'GET', 
+                headers: { 
+                    'Access-Control-Allow-Origin' : '*' 
+                } 
+            } 
         });
     }
+    afpApi.$inject = ['$resource'];    
 })();

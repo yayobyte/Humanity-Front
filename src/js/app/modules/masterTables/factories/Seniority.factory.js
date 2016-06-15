@@ -7,8 +7,9 @@
         .factory("SeniorityFactory", seniorityApi);
 
     var seniorityEndPoint = globalConfig.apiEndpoint + "/seniority/:id";
-
-    function seniorityApi ($resource){
-        return $resource (seniorityEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    
+    function seniorityApi (r) {
+        return r(seniorityEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    seniorityApi.$inject = ['$resource'];    
 })();
