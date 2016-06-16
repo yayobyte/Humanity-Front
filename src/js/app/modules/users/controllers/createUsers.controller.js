@@ -22,7 +22,7 @@
 
     function CreateUsersController(SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
-                                   EpsFactory, SkillsFactory, UsersFactory, FcFactory){
+                                   EpsFactory, SkillsFactory, UsersFactory, FcFactory) {
         var vm = this;
         vm.moduleName = moduleName;
         vm.pageName = "create";
@@ -92,11 +92,11 @@
         EpsFactory.query(function (data){
             vm.epsApi = data;
         });
-        SkillsFactory.query(function (data){
+        SkillsFactory.query(function (data) {
             vm.skillsApi = data;
         });
 
-        vm.extractSkills = function (){
+        vm.extractSkills = function () {
             //TODO: Convert this in a reusable component
             vm.postObject.skill = [];
             for (var property in vm.corporateInfo.skills){
@@ -106,7 +106,7 @@
             }
         };
 
-        vm.validateFormData = function (){
+        vm.validateFormData = function () {
             //TODO: Convert this in a reusable component
 
             angular.extend(vm.postObject, vm.personalInfo);
@@ -133,12 +133,13 @@
                 vm.postStatus.message = "User successfully created";
                 vm.postStatus.error = false;
                 vm.resetInfo();
-            },function (error){
+            }, function (error){
                 vm.postStatus = error;
                 vm.postStatus.message = "Error " + error.status + " " + error.statusText + " | Message: " + error.data.summary;
                 vm.postStatus.error = true;
                 vm.postStatus.postedForm = true;
             });
+
             return true;
         };
 
@@ -148,11 +149,16 @@
             vm.corporateInfo = {};
             vm.securityInfo = {};
         }
+
+        /* Calculates the age based on the birth date
+         * entered by the user.
+         */
+        vm.calculateAge = function() {
+            vm.personalInfo.age = parseInt((Date.now() - new Date(vm.personalInfo.birthday))/(1000*60*60*24*365))
+        }
     }
 
-    // @TODO: Investigate the way this can be injected using this method
-    //        and taking advantage of Angular's services.
-    /*CreateUsersController.$inject = [ 
+    CreateUsersController.$inject = [ 
           'SocialStratumFactory'
         , 'DocumentTypeFactory'
         , 'BirthPlaceFactory'
@@ -167,5 +173,5 @@
         , 'SkillsFactory'
         , 'UsersFactory'
         , 'FcFactory'
-    ];*/
+    ];
 })();
