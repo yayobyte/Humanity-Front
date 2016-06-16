@@ -28,28 +28,32 @@
         vm.pageName = "create";
 
         //Select lists
-        vm.documentTypeApi = "";
-        vm.birthPlaceApi = "";
-        vm.nationalityApi = "";
+        vm.documentTypeApi  = "";
+        vm.birthPlaceApi    = "";
+        vm.nationalityApi   = "";
         vm.maritalStatusApi = "";
-        vm.scholarshipApi = "";
-        vm.rhApi = "";
+        vm.scholarshipApi   = "";
+        vm.rhApi            = "";
 
         vm.seniorityApi = "";
-        vm.projectApi = "";
-        vm.afpApi = "";
-        vm.epsApi = "";
-        vm.skillsApi = "";
+        vm.projectApi   = "";
+        vm.afpApi       = "";
+        vm.epsApi       = "";
+        vm.skillsApi    = "";
 
         vm.postObject = {};
         vm.postStatus = {};
-        vm.postStatus.error = false;
-        vm.postStatus.message = false;
+        vm.postStatus.error      = false;
+        vm.postStatus.message    = false;
         vm.postStatus.postedForm = false;
-        vm.personalInfo = {};
-        vm.contactInfo = {};
-        vm.corporateInfo = {};
-        vm.securityInfo = {};
+        vm.personalInfo   = {};
+        vm.contactInfo    = {};
+        vm.corporateInfo  = {};
+        vm.securityInfo   = {};
+        vm.validationData = {};
+
+        // Validation Data
+        vm.validationData.currentDate = new Date();
 
         //Personal Info
         vm.personalInfo.status = true;

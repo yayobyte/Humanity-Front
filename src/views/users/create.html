@@ -98,7 +98,7 @@
                                 <!-- Birthday -->
                                 <label for="inputBirthDay" class="col-md-4 control-label">Birthday</label>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday"
+                                    <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday" max="{{ createUsers.validationData.currentDate | date:'yyyy-MM-dd' }}"
                                            ng-model="createUsers.personalInfo.birthday" name="birthDay" required>
                                 </div>
                             </div>
