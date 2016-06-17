@@ -95,7 +95,9 @@
                                 <label for="inputBirthDay" class="col-md-4 control-label">Birthday</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control" id="inputBirthDay" placeholder="Birthday"
-                                           ng-model="editUsers.userInfo.birthday" name="birthDay" required>
+                                           ng-model="editUsers.userInfo.birthday" name="birthDay" required
+                                           ng-change="editUsers.calculateAge()"
+                                           max="{{ editUsers.validationData.currentDate | date:'yyyy-MM-dd' }}"                                           >
                                 </div>
                             </div>
                         </div>
@@ -105,7 +107,7 @@
                                 <label for="inputAge" class="col-md-4 control-label">Age</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputAge" placeholder="Age"
-                                           ng-model="editUsers.userInfo.age" name="age" required>
+                                           ng-model="editUsers.userInfo.age" name="age" required required readonly="true">
                                 </div>
                             </div>
                         </div>
@@ -144,9 +146,9 @@
                         <div class="col-md-6">
                             <div class="form-group" ng-class="[{'has-error' : editUsersForm.nOfChildren.$invalid && editUsersForm.nOfChildren.$dirty}]">
                                 <!-- # of children -->
-                                <label for="inputNOfChildren" class="col-md-4 control-label"># of Children</label>
+                                <label for="inputNOfChildren" class="col-md-4 control-label">Number of children</label>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control" id="inputNOfChildren" placeholder="# of Children"
+                                    <input type="number" class="form-control" id="inputNOfChildren" placeholder="Number of children"
                                            ng-model="editUsers.userInfo.nOfChildren" name="nOfChildren" required>
                                 </div>
                             </div>

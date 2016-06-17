@@ -21,13 +21,20 @@
         var vm = this;
         vm.postStatus = {};
         vm.postObject = {};
+        vm.validationData = {};
+        
         vm.moduleName = moduleName;
 
-        UsersFactory.get({id: $routeParams.id}, function(data){
+        // Validation Data
+        vm.validationData.currentDate = new Date();
+
+        UsersFactory.get({id: $routeParams.id}, function(data) {
             vm.userInfo = data;
             // Convert date strings to Date type objects
             vm.userInfo.birthday = new Date(vm.userInfo.birthday);
             vm.userInfo.hiredTime = new Date(vm.userInfo.hiredTime);
+
+            vm.calculateAge();
 
             vm.pageName = data.name + ' ' + data.firstLastName;
 
@@ -36,7 +43,6 @@
                 vm.userInfo.skills [vm.userInfo.skill[c]] = vm.userInfo.skill[c] ? true : false ;
             }
             vm.userInfo.socialStratum = {'id' : data.socialStratum , 'name' : data.socialStratum};
-
         });
 
         vm.socialStratumApi = socialStratumApi;
@@ -88,7 +94,7 @@
             }
         };
 
-        vm.validateFormData = function (){
+        vm.validateFormData = function () {
             // TODO: Convert this to a reusable component
             // instead of a controller method
 
@@ -107,8 +113,18 @@
                     }else {
                         // On these fields save just the id and not the whole object for this Select lists
                         var elementsName = [
-                            'socialStratum', 'documentType', 'birthPlace', 'nationality', 'maritalStatus', 'scholarship',
-                            'rh', 'seniority', 'project', 'afp', 'eps', 'fc'
+                                'socialStratum'
+                              , 'documentType'
+                              , 'birthPlace'
+                              , 'nationality'
+                              , 'maritalStatus'
+                              , 'scholarship'
+                              , 'rh'
+                              , 'seniority'
+                              , 'project'
+                              , 'afp'
+                              , 'eps'
+                              , 'fc'
                         ];
                         if (elementsName.indexOf(elem.$name) >= 0){
                             modelValue = elem.$modelValue.id;
@@ -136,5 +152,12 @@
 
             return true;
         };
+
+        /* Calculates the age based on the birth date
+         * entered by the user.
+         */
+        vm.calculateAge = function() {
+            vm.userInfo.age = parseInt((Date.now() - new Date(vm.userInfo.birthday))/(1000*60*60*24*365))
+        }        
     }
 })();
