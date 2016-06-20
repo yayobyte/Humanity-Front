@@ -31,7 +31,8 @@
                                 <label for="inputDocumentNumber" class="col-md-4 control-label">Document Number</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" id="inputDocumentNumber" placeholder="Document Number"
-                                           ng-model="editUsers.userInfo.documentNumber" name="documentNumber" required>
+                                           ng-model="editUsers.userInfo.documentNumber" name="documentNumber" required
+                                           min="0" >
                                 </div>
                             </div>
                         </div>
@@ -149,7 +150,8 @@
                                 <label for="inputNOfChildren" class="col-md-4 control-label">Number of children</label>
                                 <div class="col-md-4">
                                     <input type="number" class="form-control" id="inputNOfChildren" placeholder="Number of children"
-                                           ng-model="editUsers.userInfo.nOfChildren" name="nOfChildren" required>
+                                           ng-model="editUsers.userInfo.nOfChildren" name="nOfChildren" required
+                                           min="0" >
                                 </div>
                             </div>
                         </div>
@@ -204,7 +206,8 @@
                                 <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
                                 <div class="col-md-4">
                                     <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
-                                           placeholder="People in charge" ng-model="editUsers.userInfo.peopleInCharge" required>
+                                           placeholder="People in charge" ng-model="editUsers.userInfo.peopleInCharge" required
+                                           min="0" >
                                 </div>
                             </div>
                         </div>
@@ -326,7 +329,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
                                         <input type="number" class="form-control" id="inputSalary" placeholder="Salary"
-                                               ng-model="editUsers.userInfo.salary" name="salary" required>
+                                               ng-model="editUsers.userInfo.salary" name="salary" required
+                                               min="0" >
                                     </div>
                                 </div>
                             </div>
