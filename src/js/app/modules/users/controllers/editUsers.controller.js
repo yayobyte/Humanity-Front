@@ -22,7 +22,7 @@
         vm.postStatus = {};
         vm.postObject = {};
         vm.validationData = {};
-        
+
         vm.moduleName = moduleName;
 
         // Validation Data
@@ -39,12 +39,14 @@
             vm.pageName = data.name + ' ' + data.firstLastName;
 
             vm.userInfo.skills = [];
-            for (var c=0; c < vm.userInfo.skill.length ; c++) {
-                vm.userInfo.skills [vm.userInfo.skill[c]] = vm.userInfo.skill[c] ? true : false ;
+
+            if (vm.userInfo.skill !== null) {
+              for (var c=0; c < vm.userInfo.skill.length ; c++) {
+                  vm.userInfo.skills [vm.userInfo.skill[c]] = vm.userInfo.skill[c] ? true : false ;
+              }
             }
             vm.userInfo.socialStratum = {'id' : data.socialStratum , 'name' : data.socialStratum};
         });
-
         vm.socialStratumApi = socialStratumApi;
 
         DocumentTypeFactory.query(function (data){
@@ -158,6 +160,6 @@
          */
         vm.calculateAge = function() {
             vm.userInfo.age = parseInt((Date.now() - new Date(vm.userInfo.birthday))/(1000*60*60*24*365))
-        }        
+        }
     }
 })();
