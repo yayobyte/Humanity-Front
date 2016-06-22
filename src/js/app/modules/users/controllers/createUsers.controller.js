@@ -19,6 +19,14 @@
         { "id" : 6, "name" : "6" }
     ];
 
+    var sexApi = [{
+        'id': 'M',
+        'name': 'Male'
+    }, {
+        'id': 'F',
+        'name': 'Female'
+    }];
+
 
     function CreateUsersController(SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
@@ -59,8 +67,9 @@
         vm.personalInfo.status = true;
 
         //Hard-coded selects
-        vm.socialStratumApi = socialStratumApi;
-        vm.statusApi = statusApi;
+        vm.socialStratumApi    = socialStratumApi;
+        vm.statusApi           = statusApi;
+        vm.personalInfo.sexApi = sexApi;
 
         FcFactory.query(function (data) {
             vm.fcApi = data;
@@ -112,15 +121,15 @@
 
         vm.validateFormData = function () {
             //TODO: Convert this in a reusable component
-
             angular.extend(vm.postObject, vm.personalInfo);
-            vm.postObject.documentType = vm.personalInfo.documentType.id ;
-            vm.postObject.birthPlace = vm.personalInfo.birthPlace.id;
-            vm.postObject.nationality =  vm.personalInfo.nationality.id;
+            vm.postObject.documentType  = vm.personalInfo.documentType.id ;
+            vm.postObject.birthPlace    = vm.personalInfo.birthPlace.id;
+            vm.postObject.nationality   =  vm.personalInfo.nationality.id;
             vm.postObject.maritalStatus = vm.personalInfo.maritalStatus.id;
-            vm.postObject.scholarship = vm.personalInfo.scholarship.id;
+            vm.postObject.scholarship   = vm.personalInfo.scholarship.id;
             vm.postObject.socialStratum = vm.personalInfo.socialStratum.id;
-            vm.postObject.rh = vm.personalInfo.rh.id;
+            vm.postObject.rh            = vm.personalInfo.rh.id;
+            vm.postObject.sex           = vm.personalInfo.sex.id;
 
             angular.extend(vm.postObject,vm.contactInfo);
 
