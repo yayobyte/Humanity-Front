@@ -226,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group" ng-class="[{'has-error' : createUsersForm.scholarship.$invalid && createUsersForm.scholarship.$touched}]">
@@ -333,7 +333,8 @@
                                 <label for="inputHiredTime" class="col-md-4 control-label">Hired Date</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control" id="inputHiredTime" placeholder="Hired Time"
-                                           ng-model="createUsers.corporateInfo.hiredTime" name="hiredTime" required>
+                                           ng-model="createUsers.corporateInfo.hiredTime" name="hiredTime" required
+                                           max="{{ createUsers.validationData.currentDate | date:'yyyy-MM-dd' }}" >
                                 </div>
                             </div>
                         </div>
