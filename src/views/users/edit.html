@@ -149,8 +149,8 @@
                                 <label for="inputBirthDay" class="col-md-4 control-label">Sex</label>
                                 <div class="col-md-4">
                                     <select class="form-control" id="inputSex" name="sex" required
-                                            ng-model="editUsersForm.userInfo.sex"
-                                            ng-options="option.name for option in editUsersForm.userInfo.sexApi track by option.id">
+                                            ng-model="editUsers.userInfo.sex"
+                                            ng-options="option.name for option in editUsers.sexApi track by option.id">
                                     </select>
                                 </div>
                             </div>
@@ -159,8 +159,7 @@
                         <div class="col-md-6">
                             <div class="form-group" ng-class="[{'has-error' : editUsersForm.maritalStatus.$invalid && editUsersForm.maritalStatus.$touched}]">
                                 <!-- Marital Status -->
-                                <label for="inputMaritalStatus" class="col-md-4 control-label">Marital
-                                    Status</label>
+                                <label for="inputMaritalStatus" class="col-md-4 control-label">Marital Status</label>
                                 <div class="col-md-8">
                                     <select class="form-control" id="inputMaritalStatus"  name="maritalStatus" required
                                             ng-model="editUsers.userInfo.maritalStatus"

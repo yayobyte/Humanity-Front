@@ -14,6 +14,13 @@
         { "id" : 6, "name" : "6" }
     ];
 
+    var sexApi = [{
+        'id': 'M',
+        'name': 'Male'
+    }, {
+        'id': 'F',
+        'name': 'Female'
+    }];
 
     function editUsersController($scope, $routeParams, SocialStratumFactory, DocumentTypeFactory, BirthPlaceFactory, NationalityFactory, MaritalStatusFactory,
                                    ScholarshipFactory, RhFactory, SeniorityFactory, ProjectFactory, AfpFactory,
@@ -46,8 +53,10 @@
               }
             }
             vm.userInfo.socialStratum = {'id' : data.socialStratum , 'name' : data.socialStratum};
+            vm.userInfo.sex = { 'id' : data.sex };
         });
         vm.socialStratumApi = socialStratumApi;
+        vm.sexApi = sexApi;
 
         DocumentTypeFactory.query(function (data){
             vm.documentTypeApi = data;
@@ -99,9 +108,9 @@
         vm.validateFormData = function () {
             // TODO: Convert this to a reusable component
             // instead of a controller method
-
             var userForm = $scope.editUsersForm;
             vm.postObject.skill = [];
+
             for (var key in userForm) {
                 var elem = userForm[key];
 
@@ -110,7 +119,7 @@
                     var modelValue = null;
                     // Validation fo Skills model
                     var skillModel = elem.$name.substring(0,6);
-                    if (skillModel == 'skills'){
+                    if (skillModel == 'skills') {
                         vm.extractSkills();
                     }else {
                         // On these fields save just the id and not the whole object for this Select lists
@@ -127,13 +136,13 @@
                               , 'afp'
                               , 'eps'
                               , 'fc'
+                              , 'sex'
                         ];
                         if (elementsName.indexOf(elem.$name) >= 0){
                             modelValue = elem.$modelValue.id;
                         }else{
                             modelValue = elem.$modelValue;
                         }
-
                         vm.postObject[elem.$name] = modelValue;
                     }
 
