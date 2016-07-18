@@ -7,7 +7,8 @@
 
     var skillsEndPoint = globalConfig.apiEndpoint + '/skills/:id';
 
-    function skillsApi ($resource){
-        return $resource (skillsEndPoint, {id:'@id'}, { update: {method:'PUT' }});
+    function skillsApi (r){
+        return r(skillsEndPoint, {id:'@id', sort:'name'}, { update: {method:'PUT' }});
     }
+    skillsApi.$inject = ['$resource'];
 })();
