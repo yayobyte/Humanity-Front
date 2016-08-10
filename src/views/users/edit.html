@@ -142,6 +142,33 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.sex.$invalid && editUsersForm.sex.$touched}]">
+                                <!-- Sex/Gender -->
+                                <label for="inputBirthDay" class="col-md-4 control-label">Sex</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="inputSex" name="sex" required
+                                            ng-model="editUsers.userInfo.sex"
+                                            ng-options="option.name for option in editUsers.sexApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.maritalStatus.$invalid && editUsersForm.maritalStatus.$touched}]">
+                                <!-- Marital Status -->
+                                <label for="inputMaritalStatus" class="col-md-4 control-label">Marital Status</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputMaritalStatus"  name="maritalStatus" required
+                                            ng-model="editUsers.userInfo.maritalStatus"
+                                            ng-options="option.name for option in editUsers.maritalStatusApi track by option.id" >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -155,16 +182,15 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.maritalStatus.$invalid && editUsersForm.maritalStatus.$touched}]">
-                                <!-- Marital Status -->
-                                <label for="inputMaritalStatus" class="col-md-4 control-label">Marital
-                                    Status</label>
-                                <div class="col-md-8">
-                                    <select class="form-control" id="inputMaritalStatus"  name="maritalStatus" required
-                                            ng-model="editUsers.userInfo.maritalStatus"
-                                            ng-options="option.name for option in editUsers.maritalStatusApi track by option.id" >
-                                    </select>
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.propleInCharge.$invalid && editUsersForm.propleInCharge.$dirty}]">
+                                <!-- People in charge -->
+                                <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
+                                           placeholder="People in charge" ng-model="editUsers.userInfo.peopleInCharge" required
+                                           min="0" >
                                 </div>
                             </div>
                         </div>
@@ -172,18 +198,6 @@
 
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.scholarship.$invalid && editUsersForm.scholarship.$touched}]">
-                                <!-- Scholarship -->
-                                <label for="inputScholarship" class="col-md-4 control-label ">Scholarship</label>
-                                <div class="col-md-8">
-                                    <select class="form-control" id="inputScholarship" name="scholarship" required
-                                            ng-model="editUsers.userInfo.scholarship"
-                                            ng-options="option.name for option in editUsers.scholarshipApi track by option.id">
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group" ng-class="[{'has-error' : editUsersForm.rh.$invalid && editUsersForm.rh.$touched}]">
                                 <!-- RH -->
@@ -196,21 +210,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.propleInCharge.$invalid && editUsersForm.propleInCharge.$dirty}]">
-                                <!-- People in charge -->
-                                <label for="inputPeopleInCharge" class="col-md-4 control-label ">People in charge</label>
-                                <div class="col-md-4">
-                                    <input type="number" class="form-control" id="inputPeopleInCharge" name="propleInCharge"
-                                           placeholder="People in charge" ng-model="editUsers.userInfo.peopleInCharge" required
-                                           min="0" >
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group" ng-class="[{'has-error' : editUsersForm.socialStratum.$invalid && editUsersForm.socialStratum.$touched}]">
                                 <!-- Social Stratum  -->
@@ -222,6 +222,21 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.scholarship.$invalid && editUsersForm.scholarship.$touched}]">
+                                <!-- Scholarship -->
+                                <label for="inputScholarship" class="col-md-4 control-label ">Scholarship</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" id="inputScholarship" name="scholarship" required
+                                            ng-model="editUsers.userInfo.scholarship"
+                                            ng-options="option.name for option in editUsers.scholarshipApi track by option.id">
+                                    </select>
+                                </div>
+                            </div>                        
                         </div>
                     </div>
 
@@ -411,7 +426,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group" ng-class="[{'has-error' : createUsersForm.afp.$invalid && createUsersForm.afp.$touched}]">
+                            <div class="form-group" ng-class="[{'has-error' : editUsersForm.afp.$invalid && editUsersForm.afp.$touched}]">
                                 <!-- FC -->
                                 <label for="inputFC" class="col-md-4 control-label">FC</label>
                                 <div class="col-md-8">
